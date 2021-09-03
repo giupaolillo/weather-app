@@ -57,7 +57,7 @@ a.degree-unit-f:hover {
 }
 
 .actual-day-of-the-week {
-  font-size: 15px;
+  font-size: 16px;
   font-variant: small-caps;
   font-weight: bold;
 }
@@ -80,7 +80,7 @@ a.degree-unit-f:hover {
   color: #fcb641;
 }
 
-.rain-chance-icon {
+.humidity-icon {
   display: block;
   margin: auto;
   padding-bottom: 3px;
@@ -116,7 +116,7 @@ a.degree-unit-f:hover {
   line-height: 31px;
 }
 
-.rain-chance {
+.humidity {
   padding-top: 9px;
   padding-left: 12px;
   text-align: right;
@@ -144,7 +144,7 @@ a.degree-unit-f:hover {
   color: black;
 }
 
-.rain-chance-col {
+.humidity-col {
   padding-left: 24px;
   padding-right: 0;
 }
@@ -163,6 +163,10 @@ a.degree-unit-f:hover {
 
 .forecast-icon-container {
   padding: 0;
+}
+
+.humidity-percentage {
+  font-weight: bold;
 }
 
 .plus-1-weekday,
