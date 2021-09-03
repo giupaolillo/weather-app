@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-ui">
+        <div class="row">
+          <div class="col-4 icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              fill="currentColor"
+              class="bi bi-sun current-location-weather-icon"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+              />
+            </svg>
+          </div>
+
+          <div class="col-8 header-container">
+            <h1>
+              <span class="current-location-city" id="city">São Paulo</span>,
+              <span class="current-location-country" id="country">Brazil</span>
+            </h1>
+            <div class="row temp-rain-row">
+              <div class="col">
+                <h2>
+                  <span class="current-location-temperature" id="temperature"
+                    >24°C </span
+                  ><span class="unit-selection"
+                    ><a href="#" class="degree-unit-c">°C</a> |
+                    <a href="#" class="degree-unit-f">°F</a></span
+                  >
+                </h2>
+              </div>
+
+              <div class="col search-details-container">
+                <div class="search-details">
+                  <span class="actual-day-of-the-week" id="current-dotw"
+                    >Monday</span
+                  ><br /><span class="current-date" id="today">19.08.2021</span
+                  ><br />
+                  <span class="current-time" id="local-time">15:45</span>
+                </div>
+              </div>
+
+              <div class="row temp-rain-row">
+                <div class="col temp-range">
+                  <div class="current-temperature-range">
+                    <span class="current-mxtemperature" id="max-temp"
+                      >Max 25°C</span
+                    >
+                    <br />
+                    <span class="current-mntemperature" id="min-temp"
+                      >Min 13°C</span
+                    >
+                  </div>
+                </div>
+
+                <div class="col rain-chance-col">
+                  <ul class="rain-chance">
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100%"
+                        height="35"
+                        fill="currentColor"
+                        class="bi bi-umbrella rain-chance-icon"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0a.5.5 0 0 1 .5.5v.514C12.625 1.238 16 4.22 16 8c0 0 0 .5-.5.5-.149 0-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394A3.166 3.166 0 0 0 13 7.5c-.638 0-1.178.213-1.564.434a3.484 3.484 0 0 0-.555.394l-.025.023-.003.003s-.204.146-.353.146-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394 3.3 3.3 0 0 0-1.064-.39V13.5H8h.5v.039l-.005.083a2.958 2.958 0 0 1-.298 1.102 2.257 2.257 0 0 1-.763.88C7.06 15.851 6.587 16 6 16s-1.061-.148-1.434-.396a2.255 2.255 0 0 1-.763-.88 2.958 2.958 0 0 1-.302-1.185v-.025l-.001-.009v-.003s0-.002.5-.002h-.5V13a.5.5 0 0 1 1 0v.506l.003.044a1.958 1.958 0 0 0 .195.726c.095.191.23.367.423.495.19.127.466.229.879.229s.689-.102.879-.229c.193-.128.328-.304.424-.495a1.958 1.958 0 0 0 .197-.77V7.544a3.3 3.3 0 0 0-1.064.39 3.482 3.482 0 0 0-.58.417l-.004.004S5.65 8.5 5.5 8.5c-.149 0-.352-.145-.352-.145l-.004-.004a3.482 3.482 0 0 0-.58-.417A3.166 3.166 0 0 0 3 7.5c-.638 0-1.177.213-1.564.434a3.482 3.482 0 0 0-.58.417l-.004.004S.65 8.5.5 8.5C0 8.5 0 8 0 8c0-3.78 3.375-6.762 7.5-6.986V.5A.5.5 0 0 1 8 0zM6.577 2.123c-2.833.5-4.99 2.458-5.474 4.854A4.124 4.124 0 0 1 3 6.5c.806 0 1.48.25 1.962.511a9.706 9.706 0 0 1 .344-2.358c.242-.868.64-1.765 1.271-2.53zm-.615 4.93A4.16 4.16 0 0 1 8 6.5a4.16 4.16 0 0 1 2.038.553 8.688 8.688 0 0 0-.307-2.13C9.434 3.858 8.898 2.83 8 2.117c-.898.712-1.434 1.74-1.731 2.804a8.687 8.687 0 0 0-.307 2.131zm3.46-4.93c.631.765 1.03 1.662 1.272 2.53.233.833.328 1.66.344 2.358A4.14 4.14 0 0 1 13 6.5c.77 0 1.42.23 1.897.477-.484-2.396-2.641-4.355-5.474-4.854z"
+                        />
+                      </svg>
+                    </li>
+                    <li>
+                      <span class="rain-chance-percentage">40%</span>
+                      <br />
+                      <span class="rain-chance-time">18:10</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <main>
+            <form class="search-bar" id="search-form">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="new-location-input"
+                  placeholder="Type in a new location"
+                  aria-label="Type in a new location"
+                  aria-describedby="button-addon2"
+                />
+                <input
+                  class="btn btn-outline-secondary"
+                  type="submit"
+                  id="button-addon2"
+                />
+                <button type="button" id="coord-button" class="btn btn-warning">
+                  Current Location
+                </button>
+              </div>
+            </form>
+          </main>
+
+          <footer>
+            <div class="row future-forecast-box">
+              <div class="col future-forecast-li forecast-icon-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="50"
+                  fill="currentColor"
+                  class="
+                    bi bi-cloud-lightning-rain
+                    current-day-plus-1-icon
+                    plus-icon
+                  "
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-.753-8.499a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973zM8.5 1a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 1zM7.053 11.276A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724l1-2z"
+                  />
+                </svg>
+                <div class="plus-1">
+                  <div class="plus-1-date">20.08.2021</div>
+
+                  <div class="plus-1-weekday">Thursday</div>
+
+                  <span class="mx-temperature plus-4-mxtemperature"
+                    ><i class="bi bi-thermometer-high"></i>33°C</span
+                  >
+                  <br />
+                  <span class="mn-temperature plus-4-mntemperature"
+                    ><i class="bi bi-thermometer-low"></i>25°C</span
+                  >
+                </div>
+              </div>
+              <div class="col future-forecast-li forecast-icon-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-cloud-sun current-day-plus-2-icon plus-icon"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M7 8a3.5 3.5 0 0 1 3.5 3.555.5.5 0 0 0 .624.492A1.503 1.503 0 0 1 13 13.5a1.5 1.5 0 0 1-1.5 1.5H3a2 2 0 1 1 .1-3.998.5.5 0 0 0 .51-.375A3.502 3.502 0 0 1 7 8zm4.473 3a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"
+                  />
+                  <path
+                    d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.734 3.374a2 2 0 1 1 3.296 2.198c.199.281.372.582.516.898a3 3 0 1 0-4.84-3.225c.352.011.696.055 1.028.129zm4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377zM14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
+                  />
+                </svg>
+                <div class="plus-2">
+                  <div class="plus-2-date">21.08.2021</div>
+
+                  <div class="plus-2-weekday">Friday</div>
+
+                  <span class="mx-temperature plus-4-mxtemperature"
+                    ><i class="bi bi-thermometer-high"></i>33°C</span
+                  >
+                  <br />
+                  <span class="mn-temperature plus-4-mntemperature"
+                    ><i class="bi bi-thermometer-low"></i>25°C</span
+                  >
+                </div>
+              </div>
+              <div class="col future-forecast-li forecast-icon-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-sun current-day-plus-3-icon plus-icon"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+                  />
+                </svg>
+                <div class="plus-3">
+                  <div class="plus-3-date">22.08.2021</div>
+
+                  <div class="plus-3-weekday">Saturday</div>
+
+                  <span class="mx-temperature plus-4-mxtemperature"
+                    ><i class="bi bi-thermometer-high"></i>33°C</span
+                  >
+                  <br />
+                  <span class="mn-temperature plus-4-mntemperature"
+                    ><i class="bi bi-thermometer-low"></i>25°C</span
+                  >
+                </div>
+              </div>
+              <div class="col future-forecast-li forecast-icon-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-sun current-day-plus-4-icon plus-icon"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+                  />
+                </svg>
+                <div class="plus-4">
+                  <div class="plus-4-date">23.08.2021</div>
+
+                  <div class="plus-4-weekday">Sunday</div>
+
+                  <span class="mx-temperature plus-4-mxtemperature"
+                    ><i class="bi bi-thermometer-high"></i>33°C</span
+                  >
+                  <br />
+                  <span class="mn-temperature plus-4-mntemperature"
+                    ><i class="bi bi-thermometer-low"></i>25°C</span
+                  >
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <p>Coded by Giulia Paolillo</p>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

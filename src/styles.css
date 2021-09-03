@@ -1,0 +1,194 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(
+    859px at 10% 20%,
+    rgb(245, 220, 154) 0%,
+    rgb(164, 78, 51) 90%
+  );
+  background-attachment: fixed;
+}
+
+h1 {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 30px;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  padding-right: 5px;
+  text-align: center;
+}
+
+p {
+  color: white;
+  font-weight: 200;
+  font-size: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.header-container {
+  padding-left: 24px;
+}
+
+.unit-selection {
+  font-size: 15px;
+  position: relative;
+  top: -22px;
+  font-weight: bold;
+}
+
+.degree-unit-c,
+.degree-unit-f {
+  text-decoration: none;
+  color: #f59393;
+}
+
+a.degree-unit-c:hover,
+a.degree-unit-f:hover {
+  color: #fcb641;
+}
+
+.actual-day-of-the-week {
+  font-size: 15px;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.main-ui {
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px;
+  display: block;
+  margin: 100px auto;
+  max-width: 700px;
+  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.current-location-weather-icon {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 200px;
+  line-height: 0;
+  color: #fcb641;
+}
+
+.rain-chance-icon {
+  display: block;
+  margin: auto;
+  padding-bottom: 3px;
+  color: #a7dce1;
+}
+
+.icon-container {
+  padding: 0 21px 0 9px;
+}
+
+.search-bar {
+  max-width: 90%;
+  margin: 60px auto 40px;
+}
+
+.search-details-container {
+  display: block;
+  text-align: right;
+  margin: 0 auto;
+  padding: 13px 13px 0 0;
+  color: gray;
+}
+
+.current-location-temperature {
+  font-size: 50px;
+  font-family: "Varela", sans-serif;
+  padding-right: 0;
+}
+
+.current-temperature-range {
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 31px;
+}
+
+.rain-chance {
+  padding-top: 9px;
+  padding-left: 12px;
+  text-align: right;
+}
+
+.future-forecast-li {
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.plus-icon {
+  opacity: 0.5;
+  padding: 0;
+  height: 49px;
+}
+
+.temp-range {
+  padding-right: 0;
+}
+
+.current-time-zone {
+  font-size: 9px;
+  font-weight: 500;
+  color: black;
+}
+
+.rain-chance-col {
+  padding-left: 24px;
+  padding-right: 0;
+}
+
+.mx-temperature {
+  font-size: 17px;
+  font-weight: 400;
+  color: #f59393;
+}
+
+.mn-temperature {
+  font-size: 17px;
+  font-weight: 200;
+  color: #6062eb;
+}
+
+.forecast-icon-container {
+  padding: 0;
+}
+
+.plus-1-weekday,
+.plus-2-weekday,
+.plus-3-weekday,
+.plus-4-weekday {
+  margin: 9px 6px;
+  border-radius: 6px;
+  font-variant: small-caps;
+  font-size: 15px;
+  background-color: #fcb641;
+  color: white;
+}
+
+.plus-1-date,
+.plus-2-date,
+.plus-3-date,
+.plus-4-date {
+  font-weight: 400;
+  padding-top: 12px;
+}
+
+.temp-rain-row {
+  padding-right: 0;
+}
+
+.unit-selection {
+  padding-left: 15px;
+}
