@@ -48,7 +48,8 @@ p {
 .degree-unit-c,
 .degree-unit-f {
   text-decoration: none;
-  color: #f59393;
+  color: #a44f34;
+  transition: all 200ms ease-in-out;
 }
 
 a.degree-unit-c:hover,
@@ -195,4 +196,24 @@ a.degree-unit-f:hover {
 
 .unit-selection {
   padding-left: 15px;
+}
+
+.coded-by-footer,
+.code-link {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.code-link {
+  color: #fcb641;
+  font-weight: bold;
+  transition: all 200ms ease-in-out;
+}
+
+.code-link:hover {
+  color: #f59393;
+}
+
+.btn-warning {
+  background-color: #fcb641;
 }
