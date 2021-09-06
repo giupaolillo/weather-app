@@ -64,7 +64,9 @@ function temperatureSearchFeedback(response) {
   let h2Temperature = document.querySelector("#temperature");
   let maxTemp = document.querySelector("#max-temp");
   let minTemp = document.querySelector("#min-temp");
+  let humidity = document.querySelector(".humidity-percentage");
 
+  humidity.innerHTML = `${response.data.main.humidity}%`;
   maxTemp.innerHTML = `Max ${Math.round(response.data.main.temp_max)}°C`;
   minTemp.innerHTML = `Min ${Math.round(response.data.main.temp_min)}°C`;
   h2Temperature.innerHTML = `${temperature}°C`;

@@ -40,16 +40,23 @@ p {
 
 .unit-selection {
   font-size: 15px;
-  position: relative;
-  top: -22px;
   font-weight: bold;
+}
+
+.unit-selection-container {
+  margin: 40px 0;
+  width: 98px;
+  border-radius: 10px;
+  padding: 0;
 }
 
 .degree-unit-c,
 .degree-unit-f {
   text-decoration: none;
-  color: #a44f34;
   transition: all 200ms ease-in-out;
+  width: 54px;
+  height: 49px;
+  margin: 0 auto;
 }
 
 a.degree-unit-c:hover,
@@ -68,7 +75,7 @@ a.degree-unit-f:hover {
   border-radius: 10px;
   padding: 40px;
   display: block;
-  margin: 100px auto;
+  margin: 0 auto;
   max-width: 700px;
   box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -109,6 +116,7 @@ a.degree-unit-f:hover {
   font-size: 50px;
   font-family: "Varela", sans-serif;
   padding-right: 0;
+  line-height: 73px;
 }
 
 .current-temperature-range {
@@ -119,7 +127,7 @@ a.degree-unit-f:hover {
 
 .humidity {
   padding-top: 9px;
-  padding-left: 12px;
+  padding-left: 0;
   text-align: right;
 }
 
@@ -194,14 +202,11 @@ a.degree-unit-f:hover {
   padding-right: 0;
 }
 
-.unit-selection {
-  padding-left: 15px;
-}
-
 .coded-by-footer,
 .code-link {
   text-decoration: none;
   font-size: 12px;
+  margin-top: 20px;
 }
 
 .code-link {
@@ -216,4 +221,22 @@ a.degree-unit-f:hover {
 
 .btn-warning {
   background-color: #fcb641;
+}
+
+.humidity-container {
+  line-height: 19px;
+  text-align: right;
+}
+
+.last-updated {
+  font-size: 10px;
+}
+
+.humidity-col {
+  padding-left: 0;
+}
+
+.unit-cont {
+  margin: 32px auto;
+  max-width: 700px;
 }
