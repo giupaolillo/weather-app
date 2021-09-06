@@ -26,16 +26,19 @@ currentDay.innerHTML = today;
 
 //time settings
 let hours = now.getHours();
-let minutes = now.getMinutes();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
 
-if (minutes.lenght === 1) {
-  minutes = 0 + minutes;
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
 }
 
 let time = `${hours}:${minutes}`;
 
 let currentTime = document.querySelector("#local-time");
-currentTime.innerHTML = `${time}`;
+currentTime.innerHTML = time;
 
 //day of the week settings
 let daysOfTheWeek = [
@@ -46,7 +49,6 @@ let daysOfTheWeek = [
   "Thursday",
   "Friday",
   "Saturday",
-  "Sunday",
 ];
 let dayOfTheWeek = daysOfTheWeek[now.getDay()];
 
