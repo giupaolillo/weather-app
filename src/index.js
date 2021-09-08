@@ -52,17 +52,38 @@ let daysOfTheWeek = [
   "Thursday",
   "Friday",
   "Saturday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
 ];
 let dayOfTheWeek = daysOfTheWeek[now.getDay()];
 
 let currentDayOfTheWeek = document.querySelector("#current-dotw");
 currentDayOfTheWeek.innerHTML = `${dayOfTheWeek}`;
 
+//day of the week (future) settings
+
+let dayOfTheWeekPlus1 = daysOfTheWeek[now.getDay() + 1];
+let dDayPlus1 = document.querySelector("#forecast-plus1");
+dDayPlus1.innerHTML = dayOfTheWeekPlus1;
+
+let dayOfTheWeekPlus2 = daysOfTheWeek[now.getDay() + 2];
+let dDayPlus2 = document.querySelector("#forecast-plus2");
+dDayPlus2.innerHTML = dayOfTheWeekPlus2;
+
+let dayOfTheWeekPlus3 = daysOfTheWeek[now.getDay() + 3];
+let dDayPlus3 = document.querySelector("#forecast-plus3");
+dDayPlus3.innerHTML = dayOfTheWeekPlus3;
+
+let dayOfTheWeekPlus4 = daysOfTheWeek[now.getDay() + 4];
+let dDayPlus4 = document.querySelector("#forecast-plus4");
+dDayPlus4.innerHTML = dayOfTheWeekPlus4;
+
 //search engine
 
 function temperatureFeedback(response) {
-  console.log(response);
-
   let temperature = Math.round(response.data.current.temp);
   let h2Temperature = document.querySelector("#temperature");
   h2Temperature.innerHTML = `${temperature}°C`;
