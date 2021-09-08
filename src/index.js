@@ -87,7 +87,7 @@ function newLocation(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", newLocation);
 
-//
+// my location button
 
 function getCoordinates(position) {
   let lat = position.coords.latitude;
@@ -105,6 +105,10 @@ function showLocation() {
 
 let coordButton = document.querySelector("#coord-button");
 coordButton.addEventListener("click", showLocation);
+
+// current location temperature display on load
+
+navigator.geolocation.getCurrentPosition(getCoordinates);
 
 //temperature F C
 function displayCelsius(event) {
