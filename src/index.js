@@ -1,4 +1,5 @@
 //general date settings
+
 let now = new Date();
 let date = now.getDate();
 let year = now.getFullYear();
@@ -25,6 +26,7 @@ let currentDay = document.querySelector("#today");
 currentDay.innerHTML = today;
 
 //time settings
+
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -41,6 +43,7 @@ let currentTime = document.querySelector("#local-time");
 currentTime.innerHTML = time;
 
 //day of the week settings
+
 let daysOfTheWeek = [
   "Sunday",
   "Monday",
@@ -57,20 +60,37 @@ currentDayOfTheWeek.innerHTML = `${dayOfTheWeek}`;
 
 //search engine
 
-function temperatureSearchFeedback(response) {
+function temperatureFeedback(response) {
   console.log(response);
-  let temperature = Math.round(response.data.main.temp);
-  let h1 = document.querySelector("h1");
-  let h2Temperature = document.querySelector("#temperature");
-  let maxTemp = document.querySelector("#max-temp");
-  let minTemp = document.querySelector("#min-temp");
-  let humidity = document.querySelector(".humidity-percentage");
 
-  humidity.innerHTML = `${response.data.main.humidity}%`;
-  maxTemp.innerHTML = `Max ${Math.round(response.data.main.temp_max)}°C`;
-  minTemp.innerHTML = `Min ${Math.round(response.data.main.temp_min)}°C`;
+  let temperature = Math.round(response.data.current.temp);
+  let h2Temperature = document.querySelector("#temperature");
   h2Temperature.innerHTML = `${temperature}°C`;
+
+  let currentMaxTemp = Math.round(response.data.daily[0].temp.max);
+  let maxTemp = document.querySelector("#max-temp");
+  maxTemp.innerHTML = `Max ${currentMaxTemp}°C`;
+
+  let currentMinTemp = Math.round(response.data.daily[0].temp.min);
+  let minTemp = document.querySelector("#min-temp");
+  minTemp.innerHTML = `Min ${currentMinTemp}°C`;
+
+  let currentHumidity = response.data.daily[0].humidity;
+  let humidity = document.querySelector(".humidity-percentage");
+  humidity.innerHTML = `${currentHumidity}%`;
+}
+
+function temperatureSearchCoordinates(response) {
+  let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
+
+  let latitude = response.data.coord.lat;
+  let longitude = response.data.coord.lon;
+  let units = "metric";
+  let apiKey = "84b3eb09d0d56e52df88211f6a4b3d2d";
+  let endpointApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
+
+  axios.get(endpointApi).then(temperatureFeedback);
 }
 
 function newLocation(event) {
@@ -81,7 +101,7 @@ function newLocation(event) {
   let apiKey = "84b3eb09d0d56e52df88211f6a4b3d2d";
   let endpointApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
-  axios.get(endpointApi).then(temperatureSearchFeedback);
+  axios.get(endpointApi).then(temperatureSearchCoordinates);
 }
 
 let form = document.querySelector("#search-form");
@@ -96,7 +116,7 @@ function getCoordinates(position) {
   let apiKey = "84b3eb09d0d56e52df88211f6a4b3d2d";
   let endpointApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
 
-  axios.get(endpointApi).then(temperatureSearchFeedback);
+  axios.get(endpointApi).then(temperatureSearchCoordinates);
 }
 
 function showLocation() {
