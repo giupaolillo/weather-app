@@ -57,11 +57,16 @@ p {
   width: 54px;
   height: 49px;
   margin: 0 auto;
+  border: none;
+  color: white;
+  background-color: black;
 }
 
-a.degree-unit-c:hover,
-a.degree-unit-f:hover {
-  color: #fcb641;
+.degree-unit-c:hover,
+.degree-unit-f:hover {
+  color: black;
+  background-color: white;
+  border: none;
 }
 
 .actual-day-of-the-week {
