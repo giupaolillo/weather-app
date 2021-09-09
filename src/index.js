@@ -60,7 +60,7 @@ let daysOfTheWeek = [
 ];
 let dayOfTheWeek = daysOfTheWeek[now.getDay()];
 
-let currentDayOfTheWeek = document.querySelector("#current-dotw");
+let currentDayOfTheWeek = document.querySelector("#current-day-of-the-week");
 currentDayOfTheWeek.innerHTML = `${dayOfTheWeek}`;
 
 //day of the week (future) settings
@@ -99,6 +99,8 @@ function temperatureFeedback(response) {
   let currentHumidity = response.data.daily[0].humidity;
   let humidity = document.querySelector(".humidity-percentage");
   humidity.innerHTML = `${currentHumidity}%`;
+
+  //let maxTemperaturePlus1 = Math.round(response.data.daily[1]).temp.max;
 }
 
 function temperatureSearchCoordinates(response) {
@@ -155,9 +157,7 @@ navigator.geolocation.getCurrentPosition(getCoordinates);
 function displayCelsius(event) {
   event.preventDefault();
 
-  let currentTemperature = document.querySelector(
-    ".current-location-temperature"
-  );
+  let currentTemperature = document.querySelector("#temperature");
 
   currentTemperature.innerHTML = "24°C ";
 }
@@ -165,14 +165,12 @@ function displayCelsius(event) {
 function displayFahrenheit(event) {
   event.preventDefault();
 
-  let currentTemperature = document.querySelector(
-    ".current-location-temperature"
-  );
+  let currentTemperature = document.querySelector("#temperature");
 
   currentTemperature.innerHTML = "60°F ";
 }
 
-let celsius = document.querySelector(".degree-unit-c");
-let fahrenheit = document.querySelector(".degree-unit-f");
+let celsius = document.querySelector("#degree-unit-c");
+let fahrenheit = document.querySelector("#degree-unit-f");
 celsius.addEventListener("click", displayCelsius);
 fahrenheit.addEventListener("click", displayFahrenheit);

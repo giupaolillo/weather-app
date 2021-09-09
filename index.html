@@ -26,24 +26,34 @@
     />
   </head>
   <body>
-    <div class="container unit-cont">
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-dark degree-unit-c">
-          °C
-        </button>
-        <button type="button" class="btn btn-outline-dark degree-unit-f">
-          °F
-        </button>
+    <div class="container">
+      <div id="unit-cont">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button
+            type="button"
+            id="degree-unit-c"
+            class="btn btn-outline-dark degree-unit"
+          >
+            °C
+          </button>
+          <button
+            type="button"
+            id="degree-unit-f"
+            class="btn btn-outline-dark degree-unit"
+          >
+            °F
+          </button>
+        </div>
       </div>
-      </div>
-      <div class="main-ui">
+      <div id="main-card">
         <div class="row">
-          <div class="col-4 icon-container">
+          <div class="col-4" id="icon-container">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
               fill="currentColor"
-              class="bi bi-sun current-location-weather-icon"
+              class="bi bi-sun"
+              id="current-location-weather-icon"
               viewBox="0 0 16 16"
             >
               <path
@@ -52,42 +62,37 @@
             </svg>
           </div>
 
-          <div class="col-8 header-container">
+          <div class="col-8">
             <h1>
-              <span class="current-location-city" id="city">São Paulo</span>,
-              <span class="current-location-country" id="country">Brazil</span>
+              <span id="city">São Paulo</span>,
+              <span id="country">Brazil</span>
             </h1>
             <div class="row temp-rain-row">
-              <div class="col">
+              <div class="col padding-r-0">
                 <h2>
-                  <span class="current-location-temperature" id="temperature"
-                    >24°C
-                  </span>
+                  <span id="temperature">24°C </span>
                 </h2>
               </div>
 
-              <div class="col search-details-container">
-                <div class="search-details">
-                  <span class="actual-day-of-the-week" id="current-dotw"
-                    >Monday</span
-                  ><br /><span class="current-date" id="today">19.08.2021</span>
+              <div class="col" id="search-details-container">
+                <div>
+                  <span id="current-day-of-the-week">Monday</span><br /><span
+                    id="today"
+                    >19.08.2021</span
+                  >
                 </div>
               </div>
 
               <div class="row temp-rain-row">
-                <div class="col temp-range">
-                  <div class="current-temperature-range">
-                    <span class="current-mxtemperature" id="max-temp"
-                      >Max 25°C</span
-                    >
+                <div class="col padding-r-0">
+                  <div>
+                    <span id="max-temp">Max 25°C</span>
                     <br />
-                    <span class="current-mntemperature" id="min-temp"
-                      >Min 13°C</span
-                    >
+                    <span id="min-temp">Min 13°C</span>
                   </div>
                 </div>
 
-                <div class="col humidity-col">
+                <div class="col padding-0">
                   <ul class="humidity">
                     <li class="humidity-container">
                       <span class="humidity-percentage">40%</span>
@@ -142,7 +147,7 @@
 
           <footer>
             <div class="row future-forecast-box">
-              <div class="col future-forecast-li forecast-icon-container">
+              <div class="col future-forecast-li padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -160,12 +165,16 @@
                   />
                 </svg>
                 <div class="plus-1">
-                  <div class="plus-1-date">20.08.2021</div>
+                  <div class="forecast-date">20.08.2021</div>
 
-                  <div class="plus-1-weekday" id="forecast-plus1"></div>
+                  <div class="forecast-weekday" id="forecast-plus1"></div>
 
                   <span class="mx-temperature plus-4-mxtemperature"
-                    ><i class="bi bi-thermometer-high"></i>33°C</span
+                    ><i
+                      class="bi bi-thermometer-high"
+                      id="max-temperature-plus1"
+                    ></i
+                    >33°C</span
                   >
                   <br />
                   <span class="mn-temperature plus-4-mntemperature"
@@ -173,7 +182,7 @@
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li forecast-icon-container">
+              <div class="col future-forecast-li padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -190,9 +199,9 @@
                   />
                 </svg>
                 <div class="plus-2">
-                  <div class="plus-2-date">21.08.2021</div>
+                  <div class="forecast-date">21.08.2021</div>
 
-                  <div class="plus-2-weekday" id="forecast-plus2"></div>
+                  <div class="forecast-weekday" id="forecast-plus2"></div>
 
                   <span class="mx-temperature plus-4-mxtemperature"
                     ><i class="bi bi-thermometer-high"></i>33°C</span
@@ -203,7 +212,7 @@
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li forecast-icon-container">
+              <div class="col future-forecast-li padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -217,9 +226,9 @@
                   />
                 </svg>
                 <div class="plus-3">
-                  <div class="plus-3-date">22.08.2021</div>
+                  <div class="forecast-date">22.08.2021</div>
 
-                  <div class="plus-3-weekday" id="forecast-plus3"></div>
+                  <div class="forecast-weekday" id="forecast-plus3"></div>
 
                   <span class="mx-temperature plus-4-mxtemperature"
                     ><i class="bi bi-thermometer-high"></i>33°C</span
@@ -230,7 +239,7 @@
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li forecast-icon-container">
+              <div class="col future-forecast-li padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -244,9 +253,9 @@
                   />
                 </svg>
                 <div class="plus-4">
-                  <div class="plus-4-date">23.08.2021</div>
+                  <div class="forecast-date">23.08.2021</div>
 
-                  <div class="plus-4-weekday" id="forecast-plus4"></div>
+                  <div class="forecast-weekday" id="forecast-plus4"></div>
 
                   <span class="mx-temperature plus-4-mxtemperature"
                     ><i class="bi bi-thermometer-high"></i>33°C</span

@@ -34,24 +34,7 @@ p {
   padding-top: 10px;
 }
 
-.header-container {
-  padding-left: 24px;
-}
-
-.unit-selection {
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.unit-selection-container {
-  margin: 40px 0;
-  width: 98px;
-  border-radius: 10px;
-  padding: 0;
-}
-
-.degree-unit-c,
-.degree-unit-f {
+.degree-unit {
   text-decoration: none;
   transition: all 200ms ease-in-out;
   width: 54px;
@@ -62,35 +45,67 @@ p {
   background-color: black;
 }
 
-.degree-unit-c:hover,
-.degree-unit-f:hover {
+.degree-unit:hover {
   color: black;
   background-color: white;
   border: none;
 }
 
-.actual-day-of-the-week {
+#current-day-of-the-week {
   font-size: 16px;
   font-variant: small-caps;
   font-weight: bold;
 }
 
-.main-ui {
+#main-card {
   background-color: white;
   border-radius: 10px;
   padding: 40px;
-  display: block;
   margin: 0 auto;
   max-width: 700px;
   box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
 }
-.current-location-weather-icon {
+#current-location-weather-icon {
   display: block;
   margin: 0 auto;
   padding: 0;
   max-width: 200px;
   line-height: 0;
   color: #fcb641;
+}
+
+#icon-container {
+  padding: 0 21px 0 9px;
+}
+
+.search-bar {
+  max-width: 90%;
+  margin: 60px auto 40px;
+}
+
+#search-details-container {
+  text-align: right;
+  padding: 13px 13px 0 0;
+  color: gray;
+}
+
+#temperature {
+  font-size: 50px;
+  font-family: "Varela", sans-serif;
+  padding-right: 0;
+  line-height: 73px;
+}
+
+#max-temp,
+#min-temp {
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 31px;
+}
+
+.humidity {
+  padding-left: 0;
+  text-align: right;
 }
 
 .humidity-icon {
@@ -100,38 +115,17 @@ p {
   color: #a7dce1;
 }
 
-.icon-container {
-  padding: 0 21px 0 9px;
-}
-
-.search-bar {
-  max-width: 90%;
-  margin: 60px auto 40px;
-}
-
-.search-details-container {
-  display: block;
-  text-align: right;
-  margin: 0 auto;
-  padding: 13px 13px 0 0;
-  color: gray;
-}
-
-.current-location-temperature {
-  font-size: 50px;
-  font-family: "Varela", sans-serif;
+.humidity-col {
+  padding-left: 24px;
   padding-right: 0;
-  line-height: 73px;
 }
 
-.current-temperature-range {
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 31px;
+.humidity-percentage {
+  font-weight: bold;
 }
 
-.humidity {
-  padding-left: 0;
+.humidity-container {
+  line-height: 19px;
   text-align: right;
 }
 
@@ -147,19 +141,10 @@ p {
   height: 49px;
 }
 
-.temp-range {
-  padding-right: 0;
-}
-
 .current-time-zone {
   font-size: 9px;
   font-weight: 500;
   color: black;
-}
-
-.humidity-col {
-  padding-left: 24px;
-  padding-right: 0;
 }
 
 .mx-temperature {
@@ -174,18 +159,15 @@ p {
   color: #6062eb;
 }
 
-.forecast-icon-container {
+.padding-0 {
   padding: 0;
 }
 
-.humidity-percentage {
-  font-weight: bold;
+.padding-r-0 {
+  padding-right: 0;
 }
 
-.plus-1-weekday,
-.plus-2-weekday,
-.plus-3-weekday,
-.plus-4-weekday {
+.forecast-weekday {
   margin: 9px 6px;
   border-radius: 6px;
   font-variant: small-caps;
@@ -194,16 +176,9 @@ p {
   color: white;
 }
 
-.plus-1-date,
-.plus-2-date,
-.plus-3-date,
-.plus-4-date {
+.forecast-date {
   font-weight: 400;
   padding-top: 12px;
-}
-
-.temp-rain-row {
-  padding-right: 0;
 }
 
 .coded-by-footer,
@@ -227,20 +202,11 @@ p {
   background-color: #fcb641;
 }
 
-.humidity-container {
-  line-height: 19px;
-  text-align: right;
-}
-
 .last-updated {
   font-size: 10px;
 }
 
-.humidity-col {
-  padding-left: 0;
-}
-
-.unit-cont {
+#unit-cont {
   margin: 32px auto;
   max-width: 700px;
 }
