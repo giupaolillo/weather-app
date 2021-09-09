@@ -83,7 +83,7 @@
                 </div>
               </div>
 
-              <div class="row temp-rain-row">
+              <div class="row padding-r-0">
                 <div class="col padding-r-0">
                   <div>
                     <span id="max-temp">Max 25°C</span>
@@ -94,12 +94,12 @@
 
                 <div class="col padding-0">
                   <ul class="humidity">
-                    <li class="humidity-container">
-                      <span class="humidity-percentage">40%</span>
+                    <li class="humidity">
+                      <strong id="humidity-percentage">40%</strong>
                       <br />
-                      <span class="last-updated">Last updated:</span>
+                      <span id="last-updated">Last updated:</span>
                       <br />
-                      <span class="current-time" id="local-time">15:45</span>
+                      <span id="local-time">15:45</span>
                     </li>
                     <li>
                       <svg
@@ -121,7 +121,7 @@
             </div>
           </div>
           <main>
-            <form class="search-bar" id="search-form">
+            <form id="search-form">
               <div class="input-group mb-3">
                 <input
                   type="text"
@@ -146,49 +146,41 @@
           </main>
 
           <footer>
-            <div class="row future-forecast-box">
-              <div class="col future-forecast-li padding-0">
+            <div class="row">
+              <div class="col padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="50"
                   fill="currentColor"
-                  class="
-                    bi bi-cloud-lightning-rain
-                    current-day-plus-1-icon
-                    plus-icon
-                  "
+                  class="bi bi-cloud-lightning-rain plus-icon"
                   viewBox="0 0 16 16"
                 >
                   <path
                     d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-.753-8.499a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973zM8.5 1a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 1zM7.053 11.276A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724l1-2z"
                   />
                 </svg>
-                <div class="plus-1">
-                  <div class="forecast-date">20.08.2021</div>
+                <div>
+                  <div class="forecast-date" id="plus-1-date">20.08.2021</div>
 
-                  <div class="forecast-weekday" id="forecast-plus1"></div>
+                  <div class="forecast-weekday" id="weekday-plus1"></div>
 
-                  <span class="mx-temperature plus-4-mxtemperature"
-                    ><i
-                      class="bi bi-thermometer-high"
-                      id="max-temperature-plus1"
-                    ></i
-                    >33°C</span
+                  <span class="mx-temperature" id="max-temp-plus1"
+                    ><i class="bi bi-thermometer-high"></i>33°C</span
                   >
                   <br />
-                  <span class="mn-temperature plus-4-mntemperature"
+                  <span class="mn-temperature" id="min-temp-plus1"
                     ><i class="bi bi-thermometer-low"></i>25°C</span
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li padding-0">
+              <div class="col padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="50"
                   fill="currentColor"
-                  class="bi bi-cloud-sun current-day-plus-2-icon plus-icon"
+                  class="bi bi-cloud-sun plus-icon"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -199,69 +191,69 @@
                   />
                 </svg>
                 <div class="plus-2">
-                  <div class="forecast-date">21.08.2021</div>
+                  <div class="forecast-date" id="plus-2-date">21.08.2021</div>
 
-                  <div class="forecast-weekday" id="forecast-plus2"></div>
+                  <div class="forecast-weekday" id="weekday-plus2"></div>
 
-                  <span class="mx-temperature plus-4-mxtemperature"
+                  <span class="mx-temperature" id="max-temp-plus2"
                     ><i class="bi bi-thermometer-high"></i>33°C</span
                   >
                   <br />
-                  <span class="mn-temperature plus-4-mntemperature"
+                  <span class="mn-temperature" id="min-temp-plus2"
                     ><i class="bi bi-thermometer-low"></i>25°C</span
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li padding-0">
+              <div class="col padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="50"
                   fill="currentColor"
-                  class="bi bi-sun current-day-plus-3-icon plus-icon"
+                  class="bi bi-sun plus-icon"
                   viewBox="0 0 16 16"
                 >
                   <path
                     d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
                   />
                 </svg>
-                <div class="plus-3">
-                  <div class="forecast-date">22.08.2021</div>
+                <div>
+                  <div class="forecast-date" id="plus-3-date">22.08.2021</div>
 
-                  <div class="forecast-weekday" id="forecast-plus3"></div>
+                  <div class="forecast-weekday" id="weekday-plus3"></div>
 
-                  <span class="mx-temperature plus-4-mxtemperature"
+                  <span class="mx-temperature" id="max-temp-plus3"
                     ><i class="bi bi-thermometer-high"></i>33°C</span
                   >
                   <br />
-                  <span class="mn-temperature plus-4-mntemperature"
+                  <span class="mn-temperature" id="min-temp-plus3"
                     ><i class="bi bi-thermometer-low"></i>25°C</span
                   >
                 </div>
               </div>
-              <div class="col future-forecast-li padding-0">
+              <div class="col padding-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="50"
                   fill="currentColor"
-                  class="bi bi-sun current-day-plus-4-icon plus-icon"
+                  class="bi bi-sun plus-icon"
                   viewBox="0 0 16 16"
                 >
                   <path
                     d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
                   />
                 </svg>
-                <div class="plus-4">
-                  <div class="forecast-date">23.08.2021</div>
+                <div>
+                  <div class="forecast-date" id="plus-4-date">23.08.2021</div>
 
-                  <div class="forecast-weekday" id="forecast-plus4"></div>
+                  <div class="forecast-weekday" id="weekday-plus4"></div>
 
-                  <span class="mx-temperature plus-4-mxtemperature"
+                  <span class="mx-temperature" id="max-temp-plus4"
                     ><i class="bi bi-thermometer-high"></i>33°C</span
                   >
                   <br />
-                  <span class="mn-temperature plus-4-mntemperature"
+                  <span class="mn-temperature" id="min-temp-plus4"
                     ><i class="bi bi-thermometer-low"></i>25°C</span
                   >
                 </div>
@@ -270,11 +262,8 @@
           </footer>
         </div>
       </div>
-      <p class="coded-by-footer">
-        <a
-          href="https://github.com/giupaolillo/weather-app"
-          class="code-link"
-          target="_blank"
+      <p class="coded-by">
+        <a href="https://github.com/giupaolillo/weather-app" target="_blank"
           >Open-source code</a
         >
         by Giulia Paolillo

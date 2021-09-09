@@ -66,19 +66,19 @@ currentDayOfTheWeek.innerHTML = `${dayOfTheWeek}`;
 //day of the week (future) settings
 
 let dayOfTheWeekPlus1 = daysOfTheWeek[now.getDay() + 1];
-let dDayPlus1 = document.querySelector("#forecast-plus1");
+let dDayPlus1 = document.querySelector("#weekday-plus1");
 dDayPlus1.innerHTML = dayOfTheWeekPlus1;
 
 let dayOfTheWeekPlus2 = daysOfTheWeek[now.getDay() + 2];
-let dDayPlus2 = document.querySelector("#forecast-plus2");
+let dDayPlus2 = document.querySelector("#weekday-plus2");
 dDayPlus2.innerHTML = dayOfTheWeekPlus2;
 
 let dayOfTheWeekPlus3 = daysOfTheWeek[now.getDay() + 3];
-let dDayPlus3 = document.querySelector("#forecast-plus3");
+let dDayPlus3 = document.querySelector("#weekday-plus3");
 dDayPlus3.innerHTML = dayOfTheWeekPlus3;
 
 let dayOfTheWeekPlus4 = daysOfTheWeek[now.getDay() + 4];
-let dDayPlus4 = document.querySelector("#forecast-plus4");
+let dDayPlus4 = document.querySelector("#weekday-plus4");
 dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 
 //search engine
@@ -97,7 +97,7 @@ function temperatureFeedback(response) {
   minTemp.innerHTML = `Min ${currentMinTemp}°C`;
 
   let currentHumidity = response.data.daily[0].humidity;
-  let humidity = document.querySelector(".humidity-percentage");
+  let humidity = document.querySelector("#humidity-percentage");
   humidity.innerHTML = `${currentHumidity}%`;
 
   //let maxTemperaturePlus1 = Math.round(response.data.daily[1]).temp.max;

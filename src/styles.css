@@ -78,9 +78,8 @@ p {
   padding: 0 21px 0 9px;
 }
 
-.search-bar {
-  max-width: 90%;
-  margin: 60px auto 40px;
+#search-form {
+  margin: 50px auto 40px;
 }
 
 #search-details-container {
@@ -104,47 +103,24 @@ p {
 }
 
 .humidity {
-  padding-left: 0;
+  line-height: 19px;
   text-align: right;
 }
 
 .humidity-icon {
   display: block;
-  margin: auto;
   padding-bottom: 3px;
   color: #a7dce1;
 }
 
-.humidity-col {
-  padding-left: 24px;
-  padding-right: 0;
-}
-
-.humidity-percentage {
-  font-weight: bold;
-}
-
-.humidity-container {
-  line-height: 19px;
-  text-align: right;
-}
-
-.future-forecast-li {
+footer .col {
   text-align: center;
-  display: inline-block;
-  margin: 0 auto;
 }
 
 .plus-icon {
   opacity: 0.5;
   padding: 0;
   height: 49px;
-}
-
-.current-time-zone {
-  font-size: 9px;
-  font-weight: 500;
-  color: black;
 }
 
 .mx-temperature {
@@ -181,28 +157,28 @@ p {
   padding-top: 12px;
 }
 
-.coded-by-footer,
-.code-link {
+.coded-by a,
+.coded-by {
   text-decoration: none;
   font-size: 12px;
   margin-top: 20px;
 }
 
-.code-link {
+.coded-by a {
   color: #fcb641;
   font-weight: bold;
   transition: all 200ms ease-in-out;
 }
 
-.code-link:hover {
+.coded-by a:hover {
   color: #f59393;
 }
 
-.btn-warning {
+#coord-button {
   background-color: #fcb641;
 }
 
-.last-updated {
+#last-updated {
   font-size: 10px;
 }
 
