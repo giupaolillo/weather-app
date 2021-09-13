@@ -88,15 +88,15 @@ dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 function temperatureFeedback(response) {
   let temperature = Math.round(response.data.current.temp);
   let h2Temperature = document.querySelector("#temperature");
-  h2Temperature.innerHTML = `${temperature}°C`;
+  h2Temperature.innerHTML = temperature;
 
   let currentMaxTemp = Math.round(response.data.daily[0].temp.max);
   let maxTemp = document.querySelector("#max-temp");
-  maxTemp.innerHTML = `Max ${currentMaxTemp}°C`;
+  maxTemp.innerHTML = currentMaxTemp;
 
   let currentMinTemp = Math.round(response.data.daily[0].temp.min);
   let minTemp = document.querySelector("#min-temp");
-  minTemp.innerHTML = `Min ${currentMinTemp}°C`;
+  minTemp.innerHTML = currentMinTemp;
 
   let currentHumidity = response.data.daily[0].humidity;
   let humidity = document.querySelector("#humidity-percentage");
@@ -104,35 +104,35 @@ function temperatureFeedback(response) {
 
   let maxTempPlus1 = Math.round(response.data.daily[1].temp.max);
   let maxPlus1 = document.querySelector("#max-temp-plus1");
-  maxPlus1.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus1}°C`;
+  maxPlus1.innerHTML = maxTempPlus1;
 
   let minTempPlus1 = Math.round(response.data.daily[1].temp.min);
   let minPlus1 = document.querySelector("#min-temp-plus1");
-  minPlus1.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus1}°C`;
+  minPlus1.innerHTML = minTempPlus1;
 
   let maxTempPlus2 = Math.round(response.data.daily[2].temp.max);
   let maxPlus2 = document.querySelector("#max-temp-plus2");
-  maxPlus2.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus2}°C`;
+  maxPlus2.innerHTML = maxTempPlus2;
 
   let minTempPlus2 = Math.round(response.data.daily[2].temp.min);
   let minPlus2 = document.querySelector("#min-temp-plus2");
-  minPlus2.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus2}°C`;
+  minPlus2.innerHTML = minTempPlus2;
 
   let maxTempPlus3 = Math.round(response.data.daily[3].temp.max);
   let maxPlus3 = document.querySelector("#max-temp-plus3");
-  maxPlus3.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus3}°C`;
+  maxPlus3.innerHTML = maxTempPlus3;
 
   let minTempPlus3 = Math.round(response.data.daily[3].temp.min);
   let minPlus3 = document.querySelector("#min-temp-plus3");
-  minPlus3.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus3}°C`;
+  minPlus3.innerHTML = minTempPlus3;
 
   let maxTempPlus4 = Math.round(response.data.daily[4].temp.max);
   let maxPlus4 = document.querySelector("#max-temp-plus4");
-  maxPlus4.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus4}°C`;
+  maxPlus4.innerHTML = maxTempPlus4;
 
   let minTempPlus4 = Math.round(response.data.daily[4].temp.min);
   let minPlus4 = document.querySelector("#min-temp-plus4");
-  minPlus4.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus4}°C`;
+  minPlus4.innerHTML = minTempPlus4;
 }
 
 function temperatureSearchCoordinates(response) {
@@ -191,15 +191,18 @@ function displayCelsius(event) {
 
   let currentTemperature = document.querySelector("#temperature");
 
-  currentTemperature.innerHTML = "24°C ";
+  currentTemperature.innerHTML = "24";
 }
 
 function displayFahrenheit(event) {
   event.preventDefault();
 
+  //let unitFahrenheit = document.getElementsByClassName(".unit-setting");
+  //let unitFahrenheit = document.querySelectorAll(".unit-setting");
+  //unitFahrenheit.innerHTML = "°F";
   let currentTemperature = document.querySelector("#temperature");
 
-  currentTemperature.innerHTML = "60°F ";
+  currentTemperature.innerHTML = "60";
 }
 
 let celsius = document.querySelector("#degree-unit-c");

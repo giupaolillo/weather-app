@@ -88,15 +88,15 @@ p {
   color: gray;
 }
 
-#temperature {
+#temperature,
+h2 .unit-setting {
   font-size: 50px;
   font-family: "Varela", sans-serif;
   padding-right: 0;
   line-height: 73px;
 }
 
-#max-temp,
-#min-temp {
+#current-temp-range {
   font-size: 21px;
   font-weight: 200;
   line-height: 31px;
