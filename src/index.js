@@ -81,6 +81,8 @@ let dayOfTheWeekPlus4 = daysOfTheWeek[now.getDay() + 4];
 let dDayPlus4 = document.querySelector("#weekday-plus4");
 dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 
+//dates (future) settings
+
 //search engine
 
 function temperatureFeedback(response) {
@@ -100,7 +102,37 @@ function temperatureFeedback(response) {
   let humidity = document.querySelector("#humidity-percentage");
   humidity.innerHTML = `${currentHumidity}%`;
 
-  //let maxTemperaturePlus1 = Math.round(response.data.daily[1]).temp.max;
+  let maxTempPlus1 = Math.round(response.data.daily[1].temp.max);
+  let maxPlus1 = document.querySelector("#max-temp-plus1");
+  maxPlus1.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus1}°C`;
+
+  let minTempPlus1 = Math.round(response.data.daily[1].temp.min);
+  let minPlus1 = document.querySelector("#min-temp-plus1");
+  minPlus1.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus1}°C`;
+
+  let maxTempPlus2 = Math.round(response.data.daily[2].temp.max);
+  let maxPlus2 = document.querySelector("#max-temp-plus2");
+  maxPlus2.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus2}°C`;
+
+  let minTempPlus2 = Math.round(response.data.daily[2].temp.min);
+  let minPlus2 = document.querySelector("#min-temp-plus2");
+  minPlus2.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus2}°C`;
+
+  let maxTempPlus3 = Math.round(response.data.daily[3].temp.max);
+  let maxPlus3 = document.querySelector("#max-temp-plus3");
+  maxPlus3.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus3}°C`;
+
+  let minTempPlus3 = Math.round(response.data.daily[3].temp.min);
+  let minPlus3 = document.querySelector("#min-temp-plus3");
+  minPlus3.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus3}°C`;
+
+  let maxTempPlus4 = Math.round(response.data.daily[4].temp.max);
+  let maxPlus4 = document.querySelector("#max-temp-plus4");
+  maxPlus4.innerHTML = `<i class="bi bi-thermometer-high"></i>${maxTempPlus4}°C`;
+
+  let minTempPlus4 = Math.round(response.data.daily[4].temp.min);
+  let minPlus4 = document.querySelector("#min-temp-plus4");
+  minPlus4.innerHTML = `<i class="bi bi-thermometer-low"></i>${minTempPlus4}°C`;
 }
 
 function temperatureSearchCoordinates(response) {
