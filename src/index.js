@@ -25,6 +25,56 @@ let today = `${date} ${month}, ${year}`;
 let currentDay = document.querySelector("#today");
 currentDay.innerHTML = today;
 
+//dates (future) settings
+
+function formatDate(date) {
+  let months = [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+  ];
+
+  let month = months[date.getMonth()];
+  let year = date.getFullYear();
+  let currentDate = date.getDate();
+
+  let fullDate = `${currentDate}.${month}.${year}`;
+  return fullDate;
+}
+
+let tomorrow = new Date(now);
+tomorrow.setDate(tomorrow.getDate() + 1);
+
+let tomorrowPlus1 = new Date(tomorrow);
+tomorrowPlus1.setDate(tomorrowPlus1.getDate() + 1);
+
+let tomorrowPlus2 = new Date(tomorrowPlus1);
+tomorrowPlus2.setDate(tomorrowPlus2.getDate() + 1);
+
+let tomorrowPlus3 = new Date(tomorrowPlus2);
+tomorrowPlus3.setDate(tomorrowPlus3.getDate() + 1);
+
+let tomorrowForecast = document.querySelector("#plus-1-date");
+tomorrowForecast.innerHTML = formatDate(tomorrow);
+
+let tomorrowPlus1Forecast = document.querySelector("#plus-2-date");
+tomorrowPlus1Forecast.innerHTML = formatDate(tomorrowPlus1);
+
+let tomorrowPlus2Forecast = document.querySelector("#plus-3-date");
+tomorrowPlus2Forecast.innerHTML = formatDate(tomorrowPlus2);
+
+let tomorrowPlus3Forecast = document.querySelector("#plus-4-date");
+tomorrowPlus3Forecast.innerHTML = formatDate(tomorrowPlus3);
+
 //time settings
 
 let hours = now.getHours();
@@ -80,8 +130,6 @@ dDayPlus3.innerHTML = dayOfTheWeekPlus3;
 let dayOfTheWeekPlus4 = daysOfTheWeek[now.getDay() + 4];
 let dDayPlus4 = document.querySelector("#weekday-plus4");
 dDayPlus4.innerHTML = dayOfTheWeekPlus4;
-
-//dates (future) settings
 
 //search engine
 
