@@ -136,8 +136,6 @@ dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 function createIcon(iconId, selectedElement) {
   let icon = document.querySelector(selectedElement);
 
-  console.log(iconId);
-
   if (iconId === "01d") {
     icon.classList = "bi bi-sun plus-icon";
   } else if (iconId === "01n") {
@@ -228,8 +226,6 @@ function temperatureFeedback(response) {
   let minTempPlus4 = Math.round(response.data.daily[4].temp.min);
   let minPlus4 = document.querySelector("#min-temp-plus4");
   minPlus4.innerHTML = minTempPlus4;
-
-  console.log(response);
 }
 
 function temperatureSearchCoordinates(response) {
