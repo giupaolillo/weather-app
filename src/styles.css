@@ -66,20 +66,19 @@ p {
   box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
 }
 #current-location-weather-icon {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 200px;
   line-height: 0;
   color: #fcb641;
+  font-size: 100px;
 }
 
 #icon-container {
-  padding: 0 21px 0 9px;
+  text-align: center;
+  line-height: 45px;
+  padding-top: 20px;
 }
 
 #search-form {
-  margin: 50px auto 40px;
+  margin: 45px auto 25px;
 }
 
 #search-details-container {
@@ -120,7 +119,7 @@ footer .col {
 .plus-icon {
   opacity: 0.5;
   padding: 0;
-  height: 49px;
+  font-size: 49px;
 }
 
 .mx-temperature {
@@ -154,7 +153,6 @@ footer .col {
 
 .forecast-date {
   font-weight: 400;
-  padding-top: 12px;
 }
 
 .coded-by a,
@@ -185,4 +183,15 @@ footer .col {
 #unit-cont {
   margin: 32px auto;
   max-width: 700px;
+}
+
+#icon-description {
+  display: block;
+  margin: 0 auto;
+  text-transform: capitalize;
+  text-align: center;
+  color: gray;
+  padding-top: 10px;
+  font-size: 13px;
+  line-height: normal;
 }

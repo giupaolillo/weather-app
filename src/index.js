@@ -133,10 +133,65 @@ dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 
 //search engine
 
+function createIcon(iconId, selectedElement) {
+  let icon = document.querySelector(selectedElement);
+
+  if (iconId === "01d") {
+    icon.classList = "bi bi-sun plus-icon";
+  } else {
+    if (iconId === "01n") {
+      icon.classList = "bi bi-moon plus-icon";
+    } else {
+      if (iconId === "02d") {
+        icon.classList = "bi bi-cloud-sun plus-icon";
+      } else {
+        if (iconId === "02n") {
+          icon.classList = "bi bi-cloud-moon plus-icon";
+        } else {
+          if (iconId === "03d" || "03n") {
+            icon.classList = "bi bi-cloud plus-icon";
+          } else {
+            if (iconId === "04d" || "04n") {
+              icon.classList = "bi bi-clouds plus-icon";
+            } else {
+              if (iconId === "09d" || "09n") {
+                icon.classList = "bi bi-cloud-drizzle plus-icon";
+              } else {
+                if (iconId === "10d" || "10n") {
+                  icon.classList = "bi bi-cloud-rain-heavy plus-icon";
+                } else {
+                  if (iconId === "11d" || "11n") {
+                    icon.classList = "bi bi-cloud-lightning-rain plus-icon";
+                  } else {
+                    if (iconId === "13d" || "13n") {
+                      icon.classList = "bi bi-snow2 plus-icon";
+                    } else {
+                      icon.classList = "bi bi-cloud-fog plus-icon";
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 function temperatureFeedback(response) {
   let temperature = Math.round(response.data.current.temp);
   let h2Temperature = document.querySelector("#temperature");
   h2Temperature.innerHTML = temperature;
+
+  let mainIcon = response.data.current.weather[0].icon;
+
+  let temperatureDescription = response.data.current.weather[0].description;
+
+  let iconDescriptionElement = document.querySelector("#icon-description");
+  iconDescriptionElement.innerHTML = temperatureDescription;
+
+  createIcon(mainIcon, "#current-location-weather-icon");
 
   let currentMaxTemp = Math.round(response.data.daily[0].temp.max);
   let maxTemp = document.querySelector("#max-temp");
@@ -150,6 +205,8 @@ function temperatureFeedback(response) {
   let humidity = document.querySelector("#humidity-percentage");
   humidity.innerHTML = `${currentHumidity}%`;
 
+  createIcon(response.data.daily[1].weather[0].icon, "#plus-1-icon");
+
   let maxTempPlus1 = Math.round(response.data.daily[1].temp.max);
   let maxPlus1 = document.querySelector("#max-temp-plus1");
   maxPlus1.innerHTML = maxTempPlus1;
@@ -157,6 +214,8 @@ function temperatureFeedback(response) {
   let minTempPlus1 = Math.round(response.data.daily[1].temp.min);
   let minPlus1 = document.querySelector("#min-temp-plus1");
   minPlus1.innerHTML = minTempPlus1;
+
+  createIcon(response.data.daily[2].weather[0].icon, "#plus-2-icon");
 
   let maxTempPlus2 = Math.round(response.data.daily[2].temp.max);
   let maxPlus2 = document.querySelector("#max-temp-plus2");
@@ -166,6 +225,8 @@ function temperatureFeedback(response) {
   let minPlus2 = document.querySelector("#min-temp-plus2");
   minPlus2.innerHTML = minTempPlus2;
 
+  createIcon(response.data.daily[3].weather[0].icon, "#plus-3-icon");
+
   let maxTempPlus3 = Math.round(response.data.daily[3].temp.max);
   let maxPlus3 = document.querySelector("#max-temp-plus3");
   maxPlus3.innerHTML = maxTempPlus3;
@@ -174,6 +235,8 @@ function temperatureFeedback(response) {
   let minPlus3 = document.querySelector("#min-temp-plus3");
   minPlus3.innerHTML = minTempPlus3;
 
+  createIcon(response.data.daily[4].weather[0].icon, "#plus-4-icon");
+
   let maxTempPlus4 = Math.round(response.data.daily[4].temp.max);
   let maxPlus4 = document.querySelector("#max-temp-plus4");
   maxPlus4.innerHTML = maxTempPlus4;
@@ -181,6 +244,8 @@ function temperatureFeedback(response) {
   let minTempPlus4 = Math.round(response.data.daily[4].temp.min);
   let minPlus4 = document.querySelector("#min-temp-plus4");
   minPlus4.innerHTML = minTempPlus4;
+
+  console.log(response);
 }
 
 function temperatureSearchCoordinates(response) {
