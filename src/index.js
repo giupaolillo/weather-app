@@ -136,46 +136,30 @@ dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 function createIcon(iconId, selectedElement) {
   let icon = document.querySelector(selectedElement);
 
+  console.log(iconId);
+
   if (iconId === "01d") {
     icon.classList = "bi bi-sun plus-icon";
+  } else if (iconId === "01n") {
+    icon.classList = "bi bi-moon plus-icon";
+  } else if (iconId === "02d") {
+    icon.classList = "bi bi-cloud-sun plus-icon";
+  } else if (iconId === "02n") {
+    icon.classList = "bi bi-cloud-moon plus-icon";
+  } else if (iconId === "03d" || iconId === "03n") {
+    icon.classList = "bi bi-cloud plus-icon";
+  } else if (iconId === "04d" || iconId === "04n") {
+    icon.classList = "bi bi-clouds plus-icon";
+  } else if (iconId === "09d" || iconId === "09n") {
+    icon.classList = "bi bi-cloud-drizzle plus-icon";
+  } else if (iconId === "10d" || iconId === "10n") {
+    icon.classList = "bi bi-cloud-rain-heavy plus-icon";
+  } else if (iconId === "11d" || iconId === "11n") {
+    icon.classList = "bi bi-cloud-lightning-rain plus-icon";
+  } else if (iconId === "13d" || iconId === "13n") {
+    icon.classList = "bi bi-snow2 plus-icon";
   } else {
-    if (iconId === "01n") {
-      icon.classList = "bi bi-moon plus-icon";
-    } else {
-      if (iconId === "02d") {
-        icon.classList = "bi bi-cloud-sun plus-icon";
-      } else {
-        if (iconId === "02n") {
-          icon.classList = "bi bi-cloud-moon plus-icon";
-        } else {
-          if (iconId === "03d" || "03n") {
-            icon.classList = "bi bi-cloud plus-icon";
-          } else {
-            if (iconId === "04d" || "04n") {
-              icon.classList = "bi bi-clouds plus-icon";
-            } else {
-              if (iconId === "09d" || "09n") {
-                icon.classList = "bi bi-cloud-drizzle plus-icon";
-              } else {
-                if (iconId === "10d" || "10n") {
-                  icon.classList = "bi bi-cloud-rain-heavy plus-icon";
-                } else {
-                  if (iconId === "11d" || "11n") {
-                    icon.classList = "bi bi-cloud-lightning-rain plus-icon";
-                  } else {
-                    if (iconId === "13d" || "13n") {
-                      icon.classList = "bi bi-snow2 plus-icon";
-                    } else {
-                      icon.classList = "bi bi-cloud-fog plus-icon";
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    icon.classList = "bi bi-cloud-fog plus-icon";
   }
 }
 
