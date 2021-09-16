@@ -185,7 +185,7 @@ function temperatureFeedback(response) {
 
   let currentHumidity = response.data.daily[0].humidity;
   let humidity = document.querySelector("#humidity-percentage");
-  humidity.innerHTML = `${currentHumidity}%`;
+  humidity.innerHTML = `<i class="bi bi-moisture humidity-icon"> </i>${currentHumidity}%`;
 
   createIcon(response.data.daily[1].weather[0].icon, "#plus-1-icon");
 

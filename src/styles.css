@@ -11,19 +11,19 @@ body {
 h1 {
   font-weight: 300;
   font-style: italic;
-  font-size: 30px;
+  font-size: 26px;
 }
 
 ul {
   list-style: none;
   margin-bottom: 0;
   padding: 0;
+  text-align: right;
 }
 
 li {
   display: inline-block;
   padding-right: 5px;
-  text-align: center;
 }
 
 p {
@@ -52,7 +52,7 @@ p {
 }
 
 #current-day-of-the-week {
-  font-size: 16px;
+  font-size: 14px;
   font-variant: small-caps;
   font-weight: bold;
 }
@@ -62,13 +62,13 @@ p {
   border-radius: 10px;
   padding: 40px;
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 560px;
   box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
 }
 #current-location-weather-icon {
   line-height: 0;
   color: #fcb641;
-  font-size: 100px;
+  font-size: 76px;
 }
 
 #icon-container {
@@ -78,13 +78,15 @@ p {
 }
 
 #search-form {
-  margin: 45px auto 25px;
+  margin: 45px auto 16px;
+  font-size: 15px;
 }
 
 #search-details-container {
   text-align: right;
   padding: 13px 13px 0 0;
   color: gray;
+  margin-bottom: 8px;
 }
 
 #temperature,
@@ -99,17 +101,19 @@ h2 .unit-setting {
   font-size: 21px;
   font-weight: 200;
   line-height: 31px;
+  padding-left: 8px;
 }
 
-.humidity {
+li .humidity {
   line-height: 19px;
   text-align: right;
+  display: inline-block;
 }
 
 .humidity-icon {
-  display: block;
-  padding-bottom: 3px;
   color: #a7dce1;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 footer .col {
@@ -138,21 +142,26 @@ footer .col {
   padding: 0;
 }
 
+.padding-8 {
+  padding: 8px;
+}
+
 .padding-r-0 {
   padding-right: 0;
 }
 
 .forecast-weekday {
-  margin: 9px 6px;
+  margin: 9px 0;
   border-radius: 6px;
   font-variant: small-caps;
-  font-size: 15px;
+  font-size: 14px;
   background-color: #fcb641;
   color: white;
 }
 
 .forecast-date {
   font-weight: 400;
+  font-size: 14px;
 }
 
 .coded-by a,
@@ -174,6 +183,7 @@ footer .col {
 
 #coord-button {
   background-color: #fcb641;
+  font-size: 14px;
 }
 
 #last-updated {
@@ -194,4 +204,21 @@ footer .col {
   padding-top: 10px;
   font-size: 13px;
   line-height: normal;
+}
+
+#button-addon2,
+.form-control {
+  font-size: 14px;
+}
+
+#current-temp-range .bi-thermometer-high {
+  color: #f59393;
+}
+
+#current-temp-range .bi-thermometer-low {
+  color: #6062eb;
+}
+
+#today {
+  font-size: 14px;
 }
