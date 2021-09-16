@@ -91,14 +91,14 @@ p {
 
 #temperature,
 h2 .unit-setting {
-  font-size: 50px;
+  font-size: 47px;
   font-family: "Varela", sans-serif;
   padding-right: 0;
   line-height: 73px;
 }
 
 #current-temp-range {
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 200;
   line-height: 31px;
   padding-left: 8px;
