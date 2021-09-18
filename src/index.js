@@ -162,9 +162,21 @@ function createIcon(iconId, selectedElement) {
 }
 
 function temperatureFeedback(response) {
-  let temperature = Math.round(response.data.current.temp);
+  celsiusTemperature = response.data.current.temp;
+  maxCelsiusTemperature = response.data.daily[0].temp.max;
+  minCelsiusTemperature = response.data.daily[0].temp.min;
+  maxP1 = response.data.daily[1].temp.max;
+  minP1 = response.data.daily[1].temp.min;
+  maxP2 = response.data.daily[2].temp.max;
+  minP2 = response.data.daily[2].temp.min;
+  maxP3 = response.data.daily[3].temp.max;
+  minP3 = response.data.daily[3].temp.min;
+  maxP4 = response.data.daily[4].temp.max;
+  minP4 = response.data.daily[4].temp.min;
+
+  let temperature = Math.round(celsiusTemperature);
   let h2Temperature = document.querySelector("#temperature");
-  h2Temperature.innerHTML = temperature;
+  h2Temperature.innerHTML = `${temperature}°C`;
 
   let mainIcon = response.data.current.weather[0].icon;
 
@@ -177,11 +189,11 @@ function temperatureFeedback(response) {
 
   let currentMaxTemp = Math.round(response.data.daily[0].temp.max);
   let maxTemp = document.querySelector("#max-temp");
-  maxTemp.innerHTML = currentMaxTemp;
+  maxTemp.innerHTML = `${currentMaxTemp}°C`;
 
   let currentMinTemp = Math.round(response.data.daily[0].temp.min);
   let minTemp = document.querySelector("#min-temp");
-  minTemp.innerHTML = currentMinTemp;
+  minTemp.innerHTML = `${currentMinTemp}°C`;
 
   let currentHumidity = response.data.daily[0].humidity;
   let humidity = document.querySelector("#humidity-percentage");
@@ -189,46 +201,47 @@ function temperatureFeedback(response) {
 
   createIcon(response.data.daily[1].weather[0].icon, "#plus-1-icon");
 
-  let maxTempPlus1 = Math.round(response.data.daily[1].temp.max);
+  let maxTempPlus1 = Math.round(maxP1);
   let maxPlus1 = document.querySelector("#max-temp-plus1");
-  maxPlus1.innerHTML = maxTempPlus1;
+  maxPlus1.innerHTML = `${maxTempPlus1}°C`;
 
-  let minTempPlus1 = Math.round(response.data.daily[1].temp.min);
+  let minTempPlus1 = Math.round(minP1);
   let minPlus1 = document.querySelector("#min-temp-plus1");
-  minPlus1.innerHTML = minTempPlus1;
+  minPlus1.innerHTML = `${minTempPlus1}°C`;
 
   createIcon(response.data.daily[2].weather[0].icon, "#plus-2-icon");
 
-  let maxTempPlus2 = Math.round(response.data.daily[2].temp.max);
+  let maxTempPlus2 = Math.round(maxP2);
   let maxPlus2 = document.querySelector("#max-temp-plus2");
-  maxPlus2.innerHTML = maxTempPlus2;
+  maxPlus2.innerHTML = `${maxTempPlus2}°C`;
 
-  let minTempPlus2 = Math.round(response.data.daily[2].temp.min);
+  let minTempPlus2 = Math.round(minP2);
   let minPlus2 = document.querySelector("#min-temp-plus2");
-  minPlus2.innerHTML = minTempPlus2;
+  minPlus2.innerHTML = `${minTempPlus2}°C`;
 
   createIcon(response.data.daily[3].weather[0].icon, "#plus-3-icon");
 
-  let maxTempPlus3 = Math.round(response.data.daily[3].temp.max);
+  let maxTempPlus3 = Math.round(maxP3);
   let maxPlus3 = document.querySelector("#max-temp-plus3");
-  maxPlus3.innerHTML = maxTempPlus3;
+  maxPlus3.innerHTML = `${maxTempPlus3}°C`;
 
-  let minTempPlus3 = Math.round(response.data.daily[3].temp.min);
+  let minTempPlus3 = Math.round(minP3);
   let minPlus3 = document.querySelector("#min-temp-plus3");
-  minPlus3.innerHTML = minTempPlus3;
+  minPlus3.innerHTML = `${minTempPlus3}°C`;
 
   createIcon(response.data.daily[4].weather[0].icon, "#plus-4-icon");
 
-  let maxTempPlus4 = Math.round(response.data.daily[4].temp.max);
+  let maxTempPlus4 = Math.round(maxP4);
   let maxPlus4 = document.querySelector("#max-temp-plus4");
-  maxPlus4.innerHTML = maxTempPlus4;
+  maxPlus4.innerHTML = `${maxTempPlus4}°C`;
 
-  let minTempPlus4 = Math.round(response.data.daily[4].temp.min);
+  let minTempPlus4 = Math.round(minP4);
   let minPlus4 = document.querySelector("#min-temp-plus4");
-  minPlus4.innerHTML = minTempPlus4;
+  minPlus4.innerHTML = `${minTempPlus4}°C`;
 }
 
 function temperatureSearchCoordinates(response) {
+  console.log(response);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
 
@@ -281,22 +294,84 @@ navigator.geolocation.getCurrentPosition(getCoordinates);
 //temperature F C
 function displayCelsius(event) {
   event.preventDefault();
+  let currentTemperatureElement = document.querySelector("#temperature");
+  let maxCelsius = document.querySelector("#max-temp");
+  let minCelsius = document.querySelector("#min-temp");
+  let maxPlus1 = document.querySelector("#max-temp-plus1");
+  let maxPlus2 = document.querySelector("#max-temp-plus2");
+  let maxPlus3 = document.querySelector("#max-temp-plus3");
+  let maxPlus4 = document.querySelector("#max-temp-plus4");
+  let minPlus1 = document.querySelector("#min-temp-plus1");
+  let minPlus2 = document.querySelector("#min-temp-plus2");
+  let minPlus3 = document.querySelector("#min-temp-plus3");
+  let minPlus4 = document.querySelector("#min-temp-plus4");
 
-  let currentTemperature = document.querySelector("#temperature");
-
-  currentTemperature.innerHTML = "24";
+  currentTemperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  maxCelsius.innerHTML = `${Math.round(maxCelsiusTemperature)}°C`;
+  minCelsius.innerHTML = `${Math.round(minCelsiusTemperature)}°C`;
+  maxPlus1.innerHTML = `${Math.round(maxP1)}°C`;
+  maxPlus2.innerHTML = `${Math.round(maxP2)}°C`;
+  maxPlus3.innerHTML = `${Math.round(maxP3)}°C`;
+  maxPlus4.innerHTML = `${Math.round(maxP4)}°C`;
+  minPlus1.innerHTML = `${Math.round(minP1)}°C`;
+  minPlus2.innerHTML = `${Math.round(minP2)}°C`;
+  minPlus3.innerHTML = `${Math.round(minP3)}°C`;
+  minPlus4.innerHTML = `${Math.round(minP4)}°C`;
 }
 
 function displayFahrenheit(event) {
   event.preventDefault();
+  let currentTemperatureElement = document.querySelector("#temperature");
+  let maxCelsius = document.querySelector("#max-temp");
+  let minCelsius = document.querySelector("#min-temp");
+  let maxFahPlus1 = document.querySelector("#max-temp-plus1");
+  let maxFahPlus2 = document.querySelector("#max-temp-plus2");
+  let maxFahPlus3 = document.querySelector("#max-temp-plus3");
+  let maxFahPlus4 = document.querySelector("#max-temp-plus4");
+  let minFahPlus1 = document.querySelector("#min-temp-plus1");
+  let minFahPlus2 = document.querySelector("#min-temp-plus2");
+  let minFahPlus3 = document.querySelector("#min-temp-plus3");
+  let minFahPlus4 = document.querySelector("#min-temp-plus4");
 
-  //let unitFahrenheit = document.getElementsByClassName(".unit-setting");
-  //let unitFahrenheit = document.querySelectorAll(".unit-setting");
-  //unitFahrenheit.innerHTML = "°F";
-  let currentTemperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let maxFahrenheit = (maxCelsiusTemperature * 9) / 5 + 32;
+  let minFahrenheit = (minCelsiusTemperature * 9) / 5 + 32;
+  let maxFahrenheitPlus1 = (maxP1 * 9) / 5 + 32;
+  let maxFahrenheitPlus2 = (maxP2 * 9) / 5 + 32;
+  let maxFahrenheitPlus3 = (maxP3 * 9) / 5 + 32;
+  let maxFahrenheitPlus4 = (maxP4 * 9) / 5 + 32;
+  let minFahrenheitPlus1 = (minP1 * 9) / 5 + 32;
+  let minFahrenheitPlus2 = (minP2 * 9) / 5 + 32;
+  let minFahrenheitPlus3 = (minP3 * 9) / 5 + 32;
+  let minFahrenheitPlus4 = (minP4 * 9) / 5 + 32;
 
-  currentTemperature.innerHTML = "60";
+  currentTemperatureElement.innerHTML = `${Math.round(
+    fahrenheitTemperature
+  )}°F`;
+  maxCelsius.innerHTML = `${Math.round(maxFahrenheit)}°F`;
+  minCelsius.innerHTML = `${Math.round(minFahrenheit)}°F`;
+
+  maxFahPlus1.innerHTML = `${Math.round(maxFahrenheitPlus1)}°F`;
+  maxFahPlus2.innerHTML = `${Math.round(maxFahrenheitPlus2)}°F`;
+  maxFahPlus3.innerHTML = `${Math.round(maxFahrenheitPlus3)}°F`;
+  maxFahPlus4.innerHTML = `${Math.round(maxFahrenheitPlus4)}°F`;
+  minFahPlus1.innerHTML = `${Math.round(minFahrenheitPlus1)}°F`;
+  minFahPlus2.innerHTML = `${Math.round(minFahrenheitPlus2)}°F`;
+  minFahPlus3.innerHTML = `${Math.round(minFahrenheitPlus3)}°F`;
+  minFahPlus4.innerHTML = `${Math.round(minFahrenheitPlus4)}°F`;
 }
+
+let celsiusTemperature = null;
+let maxCelsiusTemperature = null;
+let minCelsiusTemperature = null;
+let maxP1 = null;
+let minP1 = null;
+let maxP2 = null;
+let minP2 = null;
+let maxP3 = null;
+let minP3 = null;
+let maxP4 = null;
+let minP4 = null;
 
 let celsius = document.querySelector("#degree-unit-c");
 let fahrenheit = document.querySelector("#degree-unit-f");
