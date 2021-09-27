@@ -271,6 +271,7 @@ form.addEventListener("submit", newLocation);
 // my location button
 
 function getCoordinates(position) {
+  console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let units = "metric";
