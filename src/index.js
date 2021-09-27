@@ -241,7 +241,6 @@ function temperatureFeedback(response) {
 }
 
 function temperatureSearchCoordinates(response) {
-  console.log(response);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
 
