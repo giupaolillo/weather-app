@@ -96,46 +96,6 @@ function temperatureFeedback(response) {
   let humidity = document.querySelector("#humidity-percentage");
   humidity.innerHTML = `<i class="bi bi-moisture humidity-icon"> </i>${currentHumidity}%`;
 
-  // createIcon(response.data.daily[1].weather[0].icon, "#plus-1-icon");
-
-  // let maxTempPlus1 = Math.round(maxP1);
-  // let maxPlus1 = document.querySelector("#max-temp-plus1");
-  // maxPlus1.innerHTML = `${maxTempPlus1}°C`;
-
-  // let minTempPlus1 = Math.round(minP1);
-  // let minPlus1 = document.querySelector("#min-temp-plus1");
-  // minPlus1.innerHTML = `${minTempPlus1}°C`;
-
-  // createIcon(response.data.daily[2].weather[0].icon, "#plus-2-icon");
-
-  // let maxTempPlus2 = Math.round(maxP2);
-  // let maxPlus2 = document.querySelector("#max-temp-plus2");
-  // maxPlus2.innerHTML = `${maxTempPlus2}°C`;
-
-  // let minTempPlus2 = Math.round(minP2);
-  // let minPlus2 = document.querySelector("#min-temp-plus2");
-  // minPlus2.innerHTML = `${minTempPlus2}°C`;
-
-  // createIcon(response.data.daily[3].weather[0].icon, "#plus-3-icon");
-
-  // let maxTempPlus3 = Math.round(maxP3);
-  // let maxPlus3 = document.querySelector("#max-temp-plus3");
-  // maxPlus3.innerHTML = `${maxTempPlus3}°C`;
-
-  // let minTempPlus3 = Math.round(minP3);
-  // let minPlus3 = document.querySelector("#min-temp-plus3");
-  // minPlus3.innerHTML = `${minTempPlus3}°C`;
-
-  // createIcon(response.data.daily[4].weather[0].icon, "#plus-4-icon");
-
-  // let maxTempPlus4 = Math.round(maxP4);
-  // let maxPlus4 = document.querySelector("#max-temp-plus4");
-  // maxPlus4.innerHTML = `${maxTempPlus4}°C`;
-
-  // let minTempPlus4 = Math.round(minP4);
-  // let minPlus4 = document.querySelector("#min-temp-plus4");
-  // minPlus4.innerHTML = `${minTempPlus4}°C`;
-
   displayForecast(response);
 }
 
@@ -176,30 +136,9 @@ function getCoordinates(position) {
 function displayForecast(response) {
   let forecast = response.data.daily;
 
-  // let tomorrow = new Date(now);
-  // tomorrow.setDate(tomorrow.getDate() + 1);
-
-  // let tomorrowPlus1 = new Date(tomorrow);
-  // tomorrowPlus1.setDate(tomorrowPlus1.getDate() + 1);
-
-  // let tomorrowPlus2 = new Date(tomorrowPlus1);
-  // tomorrowPlus2.setDate(tomorrowPlus2.getDate() + 1);
-
-  // let tomorrowPlus3 = new Date(tomorrowPlus2);
-  // tomorrowPlus3.setDate(tomorrowPlus3.getDate() + 1);
-
   let forecastElement = document.querySelector("#future-weather");
 
   let forecastHTML = `<div class="row">`;
-
-  // let dayOfTheWeekPlus1 = daysOfTheWeek[now.getDay() + 1];
-  // let dayOfTheWeekPlus2 = daysOfTheWeek[now.getDay() + 2];
-  // let dayOfTheWeekPlus3 = daysOfTheWeek[now.getDay() + 3];
-
-  // let days = ["Day0", "Day1", "Day2"];
-  // days[0] = formatDate(tomorrow);
-  // days[1] = formatDate(tomorrowPlus1);
-  // days[2] = formatDate(tomorrowPlus2);
 
   forecast.forEach(function (forecastDay) {
     let forecastDate = new Date(forecastDay.dt * 1000);
@@ -235,8 +174,6 @@ function displayForecast(response) {
                   >
                 </div>
               </div>`;
-
-    // createIcon(forecastDay.weather[0].icon, "#plus-1-icon");
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -283,30 +220,6 @@ currentDay.innerHTML = today;
 
 //dates (future) settings
 
-let tomorrow = new Date(now);
-tomorrow.setDate(tomorrow.getDate() + 1);
-
-let tomorrowPlus1 = new Date(tomorrow);
-tomorrowPlus1.setDate(tomorrowPlus1.getDate() + 1);
-
-let tomorrowPlus2 = new Date(tomorrowPlus1);
-tomorrowPlus2.setDate(tomorrowPlus2.getDate() + 1);
-
-let tomorrowPlus3 = new Date(tomorrowPlus2);
-tomorrowPlus3.setDate(tomorrowPlus3.getDate() + 1);
-
-// let tomorrowForecast = document.querySelector("#plus-1-date");
-// tomorrowForecast.innerHTML = formatDate(tomorrow);
-
-// let tomorrowPlus1Forecast = document.querySelector("#plus-2-date");
-// tomorrowPlus1Forecast.innerHTML = formatDate(tomorrowPlus1);
-
-// let tomorrowPlus2Forecast = document.querySelector("#plus-3-date");
-// tomorrowPlus2Forecast.innerHTML = formatDate(tomorrowPlus2);
-
-// let tomorrowPlus3Forecast = document.querySelector("#plus-4-date");
-// tomorrowPlus3Forecast.innerHTML = formatDate(tomorrowPlus3);
-
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -324,24 +237,6 @@ currentTime.innerHTML = time;
 
 let currentDayOfTheWeek = document.querySelector("#current-day-of-the-week");
 currentDayOfTheWeek.innerHTML = formatDayOfTheWeek(now);
-
-//day of the week (future) settings
-
-// let dayOfTheWeekPlus1 = daysOfTheWeek[now.getDay() + 1];
-// let dDayPlus1 = document.querySelector("#weekday-plus1");
-// dDayPlus1.innerHTML = dayOfTheWeekPlus1;
-
-// let dayOfTheWeekPlus2 = daysOfTheWeek[now.getDay() + 2];
-// let dDayPlus2 = document.querySelector("#weekday-plus2");
-// dDayPlus2.innerHTML = dayOfTheWeekPlus2;
-
-// let dayOfTheWeekPlus3 = daysOfTheWeek[now.getDay() + 3];
-// let dDayPlus3 = document.querySelector("#weekday-plus3");
-// dDayPlus3.innerHTML = dayOfTheWeekPlus3;
-
-// let dayOfTheWeekPlus4 = daysOfTheWeek[now.getDay() + 4];
-// let dDayPlus4 = document.querySelector("#weekday-plus4");
-// dDayPlus4.innerHTML = dayOfTheWeekPlus4;
 
 //temperature F C
 // function displayCelsius(event) {

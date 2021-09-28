@@ -207,7 +207,7 @@ footer .col {
   text-transform: capitalize;
   text-align: center;
   color: gray;
-  padding-top: 10px;
+  padding-top: 0px;
   font-size: 13px;
   line-height: normal;
 }
