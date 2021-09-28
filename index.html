@@ -30,51 +30,33 @@
   </head>
   <body>
     <div class="container">
-      <div id="unit-cont">
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button
-            type="button"
-            id="degree-unit-c"
-            class="btn btn-outline-dark degree-unit"
-          >
-            °C
-          </button>
-          <button
-            type="button"
-            id="degree-unit-f"
-            class="btn btn-outline-dark degree-unit"
-          >
-            °F
-          </button>
-        </div>
-      </div>
       <div id="main-card">
         <div class="row">
           <div class="col-4" id="icon-container">
-            <i class="bi bi-cloud-rain-heavy plus-icon" id="current-location-weather-icon"></i>
+            <i class="bi bi-hourglass-split" id="current-location-weather-icon"></i>
             </svg>
             <br />
-            <span id="icon-description">Sunny</span>
+            <span id="icon-description"></span>
           </div>
 
           <div class="col-8 padding-0">
             <h1>
-              <span id="city">São Paulo</span>,
-              <span id="country">Brazil</span>
+              <span id="city"></span>
+              <span id="country"></span>
             </h1>
             <div class="row temp-rain-row">
               <div class="col padding-0">
                 <h2>
-                  <span id="temperature">24</span
+                  <span id="temperature"></span
                   >
                 </h2>
               </div>
 
               <div class="col" id="search-details-container">
                 <div>
-                  <span id="current-day-of-the-week">Monday</span><br /><span
+                  <span id="current-day-of-the-week"></span><br /><span
                     id="today"
-                    >19.08.2021</span
+                    ></span
                   >
                 </div>
               </div>
@@ -82,11 +64,11 @@
               <div class="row padding-0">
                 <div class="col padding-0">
                   <div id="current-temp-range">
-                    <i class="bi bi-thermometer-high" alt="Maximun"></i> <span id="max-temp">25</span
+                    <i class="bi bi-thermometer-high" alt="Maximun"></i> <span id="max-temp"></span
                     >
                     <br />
                     <i class="bi bi-thermometer-low" alt="Minimun"></i>
-                    <span id="min-temp">13</span
+                    <span id="min-temp"></span
                     >
                   </div>
                 </div>
@@ -94,11 +76,11 @@
                 <div class="col padding-0">
                   <ul class="humidity">
                     <li class="humidity">
-                      <strong id="humidity-percentage">40%</strong>
+                      <strong id="humidity-percentage"></strong>
                       <br />
                       <span id="last-updated">Updated at:</span>
                       <br />
-                      <span id="local-time">15:45</span>
+                      <span id="local-time"></span>
                     </li>
                   </ul>
                 </div>
@@ -124,7 +106,7 @@
                   id="button-addon2"
                   autocomplete="off"
                 />
-                <button type="button" id="coord-button" class="btn btn-warning">
+                <button type="button" id="coord-button" class="btn btn-dark by-location-button">
                   <i class="bi bi-geo-alt-fill"></i>
                 </button>
               </div>
@@ -136,12 +118,13 @@
           </footer>
         </div>
       </div>
-      <p class="coded-by">
+<div class="credit">      
+  <p class="coded-by">
         <a href="https://github.com/giupaolillo/weather-app" target="_blank"
           >Open-source code</a
         >
         by Giulia Paolillo
-      </p>
+      </p></div>
     </div>
     <script src="src/index.js"></script>
   </body>

@@ -61,13 +61,12 @@ p {
   background-color: white;
   border-radius: 10px;
   padding: 40px;
-  margin: 0 auto;
+  margin: 100px auto 0px;
   max-width: 560px;
-  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 4px 8px rgb(0 0 0 / 50%);
 }
 #current-location-weather-icon {
   line-height: 0;
-  color: #fcb641;
   font-size: 76px;
 }
 
@@ -160,7 +159,7 @@ footer .col {
   border-radius: 6px;
   font-variant: small-caps;
   font-size: 14px;
-  background-color: #fcb641;
+  background-color: gray;
   color: white;
 }
 
@@ -178,8 +177,9 @@ footer .col {
 }
 
 .coded-by a {
-  color: #fcb641;
   font-weight: bold;
+  color: #7846cf;
+  font-size: 10px;
   transition: all 200ms ease-in-out;
 }
 
@@ -187,8 +187,28 @@ footer .col {
   color: #f59393;
 }
 
+.coded-by {
+  background-color: rgba(0, 0, 0, 1);
+  max-width: 129px;
+  padding: 5px 16px 8px;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+  margin: 0px 0px 0px 351px;
+  font-size: 11px;
+  box-shadow: 5px 4px 8px rgb(0 0 0 / 50%);
+}
+
+.by-location-button {
+  border: none;
+  transition: 200ms ease-in;
+}
+
+.by-location-button:hover {
+  background-color: black;
+  color: white;
+}
+
 #coord-button {
-  background-color: #fcb641;
   font-size: 14px;
 }
 
@@ -231,4 +251,51 @@ footer .col {
 
 #forcast-element-contents {
   text-align: center;
+}
+
+.rainy-background {
+  background: linear-gradient(
+    180.3deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(110, 136, 161) 90.2%
+  );
+  background-attachment: fixed;
+}
+
+.snowy-background {
+  background: linear-gradient(
+    181.2deg,
+    rgb(181, 239, 249) 10.5%,
+    rgb(254, 254, 254) 86.8%
+  );
+  background-attachment: fixed;
+}
+
+.night-background {
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background-attachment: fixed;
+}
+
+.cloudy-background {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(242, 235, 243) 0%,
+    rgb(234, 241, 249) 90.1%
+  );
+  background-attachment: fixed;
+}
+
+.sunny-background {
+  background: radial-gradient(
+    859px at 10% 20%,
+    rgb(245, 220, 154) 0%,
+    rgb(164, 78, 51) 90%
+  );
+  background-attachment: fixed;
+}
+
+.credit {
+  padding: 0 40px;
+  margin: 0px auto 0px;
+  max-width: 560px;
 }

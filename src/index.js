@@ -15,7 +15,7 @@ function formatDate(date) {
   return fullDate;
 }
 
-function formatDayOfTheWeek(date) {
+function formatDayOfTheWeek(timestamp) {
   let daysOfTheWeek = [
     "Sunday",
     "Monday",
@@ -25,7 +25,7 @@ function formatDayOfTheWeek(date) {
     "Friday",
     "Saturday",
   ];
-  return daysOfTheWeek[date.getDay()];
+  return daysOfTheWeek[timestamp.getDay()];
 }
 
 function createIcon(iconId) {
@@ -54,18 +54,37 @@ function createIcon(iconId) {
   }
 }
 
+function changeThemeColours(iconId) {
+  let body = document.querySelector("body");
+
+  if (iconId === "01d" || iconId === "02d") {
+    body.classList = "sunny-background";
+  } else {
+    if (iconId === "01n" || iconId === "02n") {
+      body.classList = "night-background";
+    } else {
+      if (
+        iconId === "03d" ||
+        iconId === "03n" ||
+        iconId === "04d" ||
+        iconId === "04n" ||
+        iconId === "50d" ||
+        iconId === "50n"
+      ) {
+        body.classList = "cloudy-background";
+      } else {
+        if (iconId === "13d" || iconId === "13n") {
+          body.classList = "snowy-background";
+        } else {
+          body.classList = "rainy-background";
+        }
+      }
+    }
+  }
+}
+
 function temperatureFeedback(response) {
   celsiusTemperature = response.data.current.temp;
-  maxCelsiusTemperature = response.data.daily[0].temp.max;
-  minCelsiusTemperature = response.data.daily[0].temp.min;
-  maxP1 = response.data.daily[1].temp.max;
-  minP1 = response.data.daily[1].temp.min;
-  maxP2 = response.data.daily[2].temp.max;
-  minP2 = response.data.daily[2].temp.min;
-  maxP3 = response.data.daily[3].temp.max;
-  minP3 = response.data.daily[3].temp.min;
-  maxP4 = response.data.daily[4].temp.max;
-  minP4 = response.data.daily[4].temp.min;
 
   let temperature = Math.round(celsiusTemperature);
   let h2Temperature = document.querySelector("#temperature");
@@ -97,6 +116,7 @@ function temperatureFeedback(response) {
   humidity.innerHTML = `<i class="bi bi-moisture humidity-icon"> </i>${currentHumidity}%`;
 
   displayForecast(response);
+  changeThemeColours(mainIconCode);
 }
 
 function temperatureSearchCoordinates(response) {
@@ -134,7 +154,7 @@ function getCoordinates(position) {
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  let forecast = response.data.daily.slice(1, 4);
 
   let forecastElement = document.querySelector("#future-weather");
 
@@ -142,7 +162,6 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay) {
     let forecastDate = new Date(forecastDay.dt * 1000);
-
     forecastHTML =
       forecastHTML +
       `
@@ -155,7 +174,9 @@ function displayForecast(response) {
                     forecastDate
                   )}</div>
 
-                  <div class="forecast-weekday" id="weekday-plus1">Weekday</div>
+                  <div class="forecast-weekday" id="weekday-plus1">${formatDayOfTheWeek(
+                    forecastDate
+                  )}</div>
 
                   <span class="mx-temperature"
                     ><i class="bi bi-thermometer-high"></i
@@ -185,13 +206,21 @@ function showLocation() {
   navigator.geolocation.getCurrentPosition(getCoordinates);
 }
 
+function search(city) {
+  let units = "metric";
+  let apiKey = "84b3eb09d0d56e52df88211f6a4b3d2d";
+  let endpointApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+
+  axios.get(endpointApi).then(temperatureSearchCoordinates);
+}
+
+search("Alaska");
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", newLocation);
 
 let coordButton = document.querySelector("#coord-button");
 coordButton.addEventListener("click", showLocation);
-
-navigator.geolocation.getCurrentPosition(getCoordinates);
 
 let now = new Date();
 let date = now.getDate();
@@ -218,8 +247,6 @@ let today = `${date} ${month}, ${year}`;
 let currentDay = document.querySelector("#today");
 currentDay.innerHTML = today;
 
-//dates (future) settings
-
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -237,90 +264,3 @@ currentTime.innerHTML = time;
 
 let currentDayOfTheWeek = document.querySelector("#current-day-of-the-week");
 currentDayOfTheWeek.innerHTML = formatDayOfTheWeek(now);
-
-//temperature F C
-// function displayCelsius(event) {
-//   event.preventDefault();
-//   let currentTemperatureElement = document.querySelector("#temperature");
-//   let maxCelsius = document.querySelector("#max-temp");
-//   let minCelsius = document.querySelector("#min-temp");
-//   let maxPlus1 = document.querySelector("#max-temp-plus1");
-//   let maxPlus2 = document.querySelector("#max-temp-plus2");
-//   let maxPlus3 = document.querySelector("#max-temp-plus3");
-//   let maxPlus4 = document.querySelector("#max-temp-plus4");
-//   let minPlus1 = document.querySelector("#min-temp-plus1");
-//   let minPlus2 = document.querySelector("#min-temp-plus2");
-//   let minPlus3 = document.querySelector("#min-temp-plus3");
-//   let minPlus4 = document.querySelector("#min-temp-plus4");
-
-//   currentTemperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°C`;
-//   maxCelsius.innerHTML = `${Math.round(maxCelsiusTemperature)}°C`;
-//   minCelsius.innerHTML = `${Math.round(minCelsiusTemperature)}°C`;
-//   maxPlus1.innerHTML = `${Math.round(maxP1)}°C`;
-//   maxPlus2.innerHTML = `${Math.round(maxP2)}°C`;
-//   maxPlus3.innerHTML = `${Math.round(maxP3)}°C`;
-//   maxPlus4.innerHTML = `${Math.round(maxP4)}°C`;
-//   minPlus1.innerHTML = `${Math.round(minP1)}°C`;
-//   minPlus2.innerHTML = `${Math.round(minP2)}°C`;
-//   minPlus3.innerHTML = `${Math.round(minP3)}°C`;
-//   minPlus4.innerHTML = `${Math.round(minP4)}°C`;
-// }
-
-// function displayFahrenheit(event) {
-//   event.preventDefault();
-//   let currentTemperatureElement = document.querySelector("#temperature");
-//   let maxCelsius = document.querySelector("#max-temp");
-//   let minCelsius = document.querySelector("#min-temp");
-//   let maxFahPlus1 = document.querySelector("#max-temp-plus1");
-//   let maxFahPlus2 = document.querySelector("#max-temp-plus2");
-//   let maxFahPlus3 = document.querySelector("#max-temp-plus3");
-//   let maxFahPlus4 = document.querySelector("#max-temp-plus4");
-//   let minFahPlus1 = document.querySelector("#min-temp-plus1");
-//   let minFahPlus2 = document.querySelector("#min-temp-plus2");
-//   let minFahPlus3 = document.querySelector("#min-temp-plus3");
-//   let minFahPlus4 = document.querySelector("#min-temp-plus4");
-
-//   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-//   let maxFahrenheit = (maxCelsiusTemperature * 9) / 5 + 32;
-//   let minFahrenheit = (minCelsiusTemperature * 9) / 5 + 32;
-//   let maxFahrenheitPlus1 = (maxP1 * 9) / 5 + 32;
-//   let maxFahrenheitPlus2 = (maxP2 * 9) / 5 + 32;
-//   let maxFahrenheitPlus3 = (maxP3 * 9) / 5 + 32;
-//   let maxFahrenheitPlus4 = (maxP4 * 9) / 5 + 32;
-//   let minFahrenheitPlus1 = (minP1 * 9) / 5 + 32;
-//   let minFahrenheitPlus2 = (minP2 * 9) / 5 + 32;
-//   let minFahrenheitPlus3 = (minP3 * 9) / 5 + 32;
-//   let minFahrenheitPlus4 = (minP4 * 9) / 5 + 32;
-
-//   currentTemperatureElement.innerHTML = `${Math.round(
-//     fahrenheitTemperature
-//   )}°F`;
-//   maxCelsius.innerHTML = `${Math.round(maxFahrenheit)}°F`;
-//   minCelsius.innerHTML = `${Math.round(minFahrenheit)}°F`;
-
-//   maxFahPlus1.innerHTML = `${Math.round(maxFahrenheitPlus1)}°F`;
-//   maxFahPlus2.innerHTML = `${Math.round(maxFahrenheitPlus2)}°F`;
-//   maxFahPlus3.innerHTML = `${Math.round(maxFahrenheitPlus3)}°F`;
-//   maxFahPlus4.innerHTML = `${Math.round(maxFahrenheitPlus4)}°F`;
-//   minFahPlus1.innerHTML = `${Math.round(minFahrenheitPlus1)}°F`;
-//   minFahPlus2.innerHTML = `${Math.round(minFahrenheitPlus2)}°F`;
-//   minFahPlus3.innerHTML = `${Math.round(minFahrenheitPlus3)}°F`;
-//   minFahPlus4.innerHTML = `${Math.round(minFahrenheitPlus4)}°F`;
-// }
-
-// let celsiusTemperature = null;
-// let maxCelsiusTemperature = null;
-// let minCelsiusTemperature = null;
-// let maxP1 = null;
-// let minP1 = null;
-// let maxP2 = null;
-// let minP2 = null;
-// let maxP3 = null;
-// let minP3 = null;
-// let maxP4 = null;
-// let minP4 = null;
-
-// let celsius = document.querySelector("#degree-unit-c");
-// let fahrenheit = document.querySelector("#degree-unit-f");
-// celsius.addEventListener("click", displayCelsius);
-// fahrenheit.addEventListener("click", displayFahrenheit);
