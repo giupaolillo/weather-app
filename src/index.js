@@ -1,51 +1,56 @@
 function formatDate(date) {
-  let months = [
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-    "06",
-    "07",
-    "08",
-    "09",
-    "10",
-    "11",
-    "12",
-  ];
-  let month = months[date.getMonth()];
+  let month = date.getMonth() + 1;
   let year = date.getFullYear();
   let currentDate = date.getDate();
+
+  if (currentDate < 10) {
+    currentDate = "0" + currentDate;
+  }
+
+  if (month < 10) {
+    month = "0" + month;
+  }
 
   let fullDate = `${currentDate}.${month}.${year}`;
   return fullDate;
 }
 
-function createIcon(iconId, selectedElement) {
-  let icon = document.querySelector(selectedElement);
+function formatDayOfTheWeek(date) {
+  let daysOfTheWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return daysOfTheWeek[date.getDay()];
+}
 
+function createIcon(iconId) {
   if (iconId === "01d") {
-    icon.classList = "bi bi-sun plus-icon";
+    return "bi bi-sun plus-icon";
   } else if (iconId === "01n") {
-    icon.classList = "bi bi-moon plus-icon";
+    return "bi bi-moon plus-icon";
   } else if (iconId === "02d") {
-    icon.classList = "bi bi-cloud-sun plus-icon";
+    return "bi bi-cloud-sun plus-icon";
   } else if (iconId === "02n") {
-    icon.classList = "bi bi-cloud-moon plus-icon";
+    return "bi bi-cloud-moon plus-icon";
   } else if (iconId === "03d" || iconId === "03n") {
-    icon.classList = "bi bi-cloud plus-icon";
+    return "bi bi-cloud plus-icon";
   } else if (iconId === "04d" || iconId === "04n") {
-    icon.classList = "bi bi-clouds plus-icon";
+    return "bi bi-clouds plus-icon";
   } else if (iconId === "09d" || iconId === "09n") {
-    icon.classList = "bi bi-cloud-drizzle plus-icon";
+    return "bi bi-cloud-drizzle plus-icon";
   } else if (iconId === "10d" || iconId === "10n") {
-    icon.classList = "bi bi-cloud-rain-heavy plus-icon";
+    return "bi bi-cloud-rain-heavy plus-icon";
   } else if (iconId === "11d" || iconId === "11n") {
-    icon.classList = "bi bi-cloud-lightning-rain plus-icon";
+    return "bi bi-cloud-lightning-rain plus-icon";
   } else if (iconId === "13d" || iconId === "13n") {
-    icon.classList = "bi bi-snow2 plus-icon";
+    return "bi bi-snow2 plus-icon";
   } else {
-    icon.classList = "bi bi-cloud-fog plus-icon";
+    return "bi bi-cloud-fog plus-icon";
   }
 }
 
@@ -66,14 +71,18 @@ function temperatureFeedback(response) {
   let h2Temperature = document.querySelector("#temperature");
   h2Temperature.innerHTML = `${temperature}°C`;
 
-  let mainIcon = response.data.current.weather[0].icon;
-
   let temperatureDescription = response.data.current.weather[0].description;
 
   let iconDescriptionElement = document.querySelector("#icon-description");
   iconDescriptionElement.innerHTML = temperatureDescription;
 
-  createIcon(mainIcon, "#current-location-weather-icon");
+  let mainIconCode = response.data.current.weather[0].icon;
+
+  let mainIconElement = document.querySelector(
+    "#current-location-weather-icon"
+  );
+
+  mainIconElement.classList = createIcon(mainIconCode);
 
   let currentMaxTemp = Math.round(response.data.daily[0].temp.max);
   let maxTemp = document.querySelector("#max-temp");
@@ -126,6 +135,8 @@ function temperatureFeedback(response) {
   // let minTempPlus4 = Math.round(minP4);
   // let minPlus4 = document.querySelector("#min-temp-plus4");
   // minPlus4.innerHTML = `${minTempPlus4}°C`;
+
+  displayForecast(response);
 }
 
 function temperatureSearchCoordinates(response) {
@@ -139,7 +150,6 @@ function temperatureSearchCoordinates(response) {
   let endpointApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
 
   axios.get(endpointApi).then(temperatureFeedback);
-  displayForecast();
 }
 
 function newLocation(event) {
@@ -154,7 +164,6 @@ function newLocation(event) {
 }
 
 function getCoordinates(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let units = "metric";
@@ -164,56 +173,70 @@ function getCoordinates(position) {
   axios.get(endpointApi).then(temperatureSearchCoordinates);
 }
 
-function displayForecast() {
-  let tomorrow = new Date(now);
-  tomorrow.setDate(tomorrow.getDate() + 1);
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
-  let tomorrowPlus1 = new Date(tomorrow);
-  tomorrowPlus1.setDate(tomorrowPlus1.getDate() + 1);
+  // let tomorrow = new Date(now);
+  // tomorrow.setDate(tomorrow.getDate() + 1);
 
-  let tomorrowPlus2 = new Date(tomorrowPlus1);
-  tomorrowPlus2.setDate(tomorrowPlus2.getDate() + 1);
+  // let tomorrowPlus1 = new Date(tomorrow);
+  // tomorrowPlus1.setDate(tomorrowPlus1.getDate() + 1);
 
-  let tomorrowPlus3 = new Date(tomorrowPlus2);
-  tomorrowPlus3.setDate(tomorrowPlus3.getDate() + 1);
+  // let tomorrowPlus2 = new Date(tomorrowPlus1);
+  // tomorrowPlus2.setDate(tomorrowPlus2.getDate() + 1);
+
+  // let tomorrowPlus3 = new Date(tomorrowPlus2);
+  // tomorrowPlus3.setDate(tomorrowPlus3.getDate() + 1);
 
   let forecastElement = document.querySelector("#future-weather");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Day0", "Day1", "Day2"];
 
   // let dayOfTheWeekPlus1 = daysOfTheWeek[now.getDay() + 1];
   // let dayOfTheWeekPlus2 = daysOfTheWeek[now.getDay() + 2];
   // let dayOfTheWeekPlus3 = daysOfTheWeek[now.getDay() + 3];
 
-  days[0] = formatDate(tomorrow);
-  days[1] = formatDate(tomorrowPlus1);
-  days[2] = formatDate(tomorrowPlus2);
+  // let days = ["Day0", "Day1", "Day2"];
+  // days[0] = formatDate(tomorrow);
+  // days[1] = formatDate(tomorrowPlus1);
+  // days[2] = formatDate(tomorrowPlus2);
 
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
+    let forecastDate = new Date(forecastDay.dt * 1000);
+
     forecastHTML =
       forecastHTML +
       `
               <div class="col-4 padding-8">
-                <i class="bi bi-cloud-sun plus-icon" id="plus-1-icon"></i>
+                <i class="${createIcon(
+                  forecastDay.weather[0].icon
+                )}" id="plus-1-icon"></i>
                 <div id="forcast-element-contents">
-                  <div class="forecast-date" id="plus-1-date">${day}</div>
+                  <div class="forecast-date" id="plus-1-date">${formatDate(
+                    forecastDate
+                  )}</div>
 
                   <div class="forecast-weekday" id="weekday-plus1">Weekday</div>
 
                   <span class="mx-temperature"
                     ><i class="bi bi-thermometer-high"></i
-                    ><span id="max-temp-plus1">20°C</span
+                    ><span id="max-temp-plus1">${Math.round(
+                      forecastDay.temp.max
+                    )}°C</span
                     ></span
                   >
                   <br />
                   <span class="mn-temperature"
                     ><i class="bi bi-thermometer-low"></i
-                    ><span id="min-temp-plus1">10°C</span
+                    ><span id="min-temp-plus1">${Math.round(
+                      forecastDay.temp.min
+                    )}°C</span
                     ></span
                   >
                 </div>
               </div>`;
+
+    // createIcon(forecastDay.weather[0].icon, "#plus-1-icon");
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -299,24 +322,8 @@ let time = `${hours}:${minutes}`;
 let currentTime = document.querySelector("#local-time");
 currentTime.innerHTML = time;
 
-let daysOfTheWeek = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-];
-let dayOfTheWeek = daysOfTheWeek[now.getDay()];
-
 let currentDayOfTheWeek = document.querySelector("#current-day-of-the-week");
-currentDayOfTheWeek.innerHTML = `${dayOfTheWeek}`;
+currentDayOfTheWeek.innerHTML = formatDayOfTheWeek(now);
 
 //day of the week (future) settings
 
