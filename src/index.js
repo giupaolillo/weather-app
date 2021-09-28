@@ -214,7 +214,7 @@ function search(city) {
   axios.get(endpointApi).then(temperatureSearchCoordinates);
 }
 
-search("Kassiopi");
+search("Berlin");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", newLocation);
