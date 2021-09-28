@@ -169,7 +169,7 @@ function displayForecast(response) {
                 <i class="${createIcon(
                   forecastDay.weather[0].icon
                 )}" id="plus-1-icon"></i>
-                <div id="forcast-element-contents">
+                <div id="forecast-element-contents">
                   <div class="forecast-date" id="plus-1-date">${formatDate(
                     forecastDate
                   )}</div>
@@ -214,7 +214,7 @@ function search(city) {
   axios.get(endpointApi).then(temperatureSearchCoordinates);
 }
 
-search("Alaska");
+search("Kassiopi");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", newLocation);
